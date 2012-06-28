@@ -7,6 +7,19 @@ using System.Web.UI.WebControls;
 
 public partial class Default2 : System.Web.UI.Page
 {
+    const string DEFAULT_STRING = "NULL";
+
+    //错误码
+    const string RETURN_NORMAL = "0";
+
+    const string RETURN_NULL_PRIMARY_KEY = "1";
+    const string RETURN_DUPLICATE_PRIMARY_KEY = "2";
+    const string RETURN_DUPLICATE_PO_SN = "3";
+
+    const string RETURN_INVALID_MODIFY_FLAG = "4";
+
+    const string RETURN_DELETE_INVALID_RECORD = "21";
+
 
     protected void Response_post_variable(string name,string value)
     {
@@ -34,23 +47,79 @@ public partial class Default2 : System.Web.UI.Page
         Response_post_variable("modify_flag", modify_flag);
     }
 
+
+    //新增一条记录
+    protected void AddNewRecord(
+        string running_no,
+        string po_no,
+        string warehouse_code,
+        string barcode_no,
+        string scan_time,
+        string run_no_for_modify,
+        string modify_flag)
+    {
+        Garbage gb = new Garbage();
+        if (new GarbageBLL().IsContainOnum(running_no))
+        {
+            Response_all(
+                 RETURN_DUPLICATE_PRIMARY_KEY,
+                 running_no,
+                 po_no,
+                 warehouse_code,
+                 barcode_no,
+                 scan_time,
+                 run_no_for_modify,
+                 modify_flag);
+            return;
+            //this.Label1.Text = "该流水号已存在，请重新输入";
+        }
+        else
+        {
+            gb.Onum = running_no;//流水号
+
+            if (warehouse_code.Length != 0)//仓库编码
+            {
+                gb.GN = warehouse_code;
+            }
+            else
+            {
+                gb.GN = DEFAULT_STRING;
+            }
+
+            gb.PO_ = po_no;//订单号
+            gb.SN = barcode_no;//序列号
+            gb.ST = Convert.ToDateTime(scan_time);//扫描时间
+            //本记录的接收时间按照当前页面的提交时间
+            string time_now = Convert.ToString(System.DateTime.Now);
+            gb.RT = Convert.ToDateTime(time_now);//接受时间
+
+
+            gb.OW = run_no_for_modify;//待修改流水号
+            gb.Flag = Convert.ToInt16(modify_flag);//修改标识
+
+            //执行Insert的Linq语句
+            new GarbageBLL().AddGaibageNewInfo(gb);
+
+            Response_all(
+                 RETURN_NORMAL,
+                 running_no,
+                 po_no,
+                 warehouse_code,
+                 barcode_no,
+                 scan_time,
+                 run_no_for_modify,
+                 modify_flag);
+            return;
+
+            //Response.Write("信息添加成功");
+        }
+
+    }
+
     //对于get方式，服务器端用Request.QueryString获取变量的值，
     //对于post方式，服务器端用Request.Form获取提交的数据。
     protected void Page_Load(object sender, EventArgs e)
     {
-        const string DEFAULT_STRING = "NULL";
-
-        //错误码
-        string RETURN_NORMAL = "0";
-        
-        string RETURN_NULL_PRIMARY_KEY = "1";
-        string RETURN_DUPLICATE_PRIMARY_KEY = "2";
-        string RETURN_DUPLICATE_PO_SN = "3";
-
-        string RETURN_INVALID_MODIFY_FLAG = "4";
-
-        string RETURN_DELETE_INVALID_RECORD = "21";
-
         //第一部分，接收手持端参数
         string running_no="";       //流水号
         string po_no = "";          //订单号
@@ -87,88 +156,27 @@ public partial class Default2 : System.Web.UI.Page
         }
 
 
-        //////////////////
-
-        //Response_all(
-        //    "for_check",
-        //    running_no,
-        //    po_no,
-        //    warehouse_code,
-        //    barcode_no,
-        //    scan_time,
-        //    run_no_for_modify,
-        //    modify_flag);
-        //        return;
-        ///////////////////
-
-
-
         //2.按照修改操作符区分
         int i_flag = Convert.ToInt16(modify_flag);
 
         //普通新增
         if (i_flag == 0)
         {
-            Garbage gb = new Garbage();
-            if (new GarbageBLL().IsContainOnum(running_no))
-            {
-                Response_all(
-                     RETURN_DUPLICATE_PRIMARY_KEY,
-                     running_no,
-                     po_no,
-                     warehouse_code,
-                     barcode_no,
-                     scan_time,
-                     run_no_for_modify,
-                     modify_flag);
-                return;
-                //this.Label1.Text = "该流水号已存在，请重新输入";
-            }
-            else
-            {
-                gb.Onum = running_no;//流水号
+            AddNewRecord(
+                running_no,
+                po_no,
+                warehouse_code,
+                barcode_no,
+                scan_time,
+                run_no_for_modify,
+                modify_flag);
 
-                if (warehouse_code.Length != 0)//仓库编码
-                {
-                    gb.GN = warehouse_code;
-                }
-                else
-                {
-                    gb.GN = DEFAULT_STRING;
-                }
-
-                gb.PO_ = po_no;//订单号
-                gb.SN = barcode_no;//序列号
-                gb.ST = Convert.ToDateTime(scan_time);//扫描时间
-                //本记录的接收时间按照当前页面的提交时间
-                string time_now = Convert.ToString(System.DateTime.Now);
-                gb.RT = Convert.ToDateTime(time_now);//接受时间
-
-
-                gb.OW = run_no_for_modify;//待修改流水号
-                gb.Flag = Convert.ToInt16(modify_flag);//修改标识
-
-                //执行Insert的Linq语句
-                new GarbageBLL().AddGaibageNewInfo(gb);
-
-                Response_all(
-                     RETURN_NORMAL,
-                     running_no,
-                     po_no,
-                     warehouse_code,
-                     barcode_no,
-                     scan_time,
-                     run_no_for_modify,
-                     modify_flag);
-                return;
-
-                //Response.Write("信息添加成功");
-            }
+            return;
 
         }
         else if (i_flag == 1)//删除操作
         {
-            if (new GarbageBLL().IsContainOW(run_no_for_modify))
+            if (new GarbageBLL().IsContainOW(run_no_for_modify))//包含run_no_for_modify
             {
                 new GarbageBLL().deleteGarbageInfo(run_no_for_modify);
                 
@@ -223,27 +231,15 @@ public partial class Default2 : System.Web.UI.Page
                     //this.Label1.Text = "该流水号已存在，请重新输入";
                 }
                 else
-                {                    
-                    gb.Onum = running_no;
-                    gb.GN = warehouse_code;
-                    gb.PO_ = po_no;
-                    gb.SN = barcode_no;
-                    gb.ST = Convert.ToDateTime(scan_time);
-                    string time_now = Convert.ToString(System.DateTime.Now);
-                    gb.RT = Convert.ToDateTime(time_now);//接受时间
-                    gb.OW = run_no_for_modify;
-                    gb.Flag = i_flag;
-                    new GarbageBLL().AddGaibageNewInfo(gb);
-
-                    Response_all(
-                         RETURN_NORMAL,
-                         running_no,
-                         po_no,
-                         warehouse_code,
-                         barcode_no,
-                         scan_time,
-                         run_no_for_modify,
-                         modify_flag);
+                {
+                    AddNewRecord(
+                        running_no,
+                        po_no,
+                        warehouse_code,
+                        barcode_no,
+                        scan_time,
+                        run_no_for_modify,
+                        modify_flag);
                     return;
                     //Response.Write("错误流水号信息已删除,新信息添加成功");
                 }

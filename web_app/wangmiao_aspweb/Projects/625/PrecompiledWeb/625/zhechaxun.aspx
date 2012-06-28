@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="zhechaxun, App_Web_lj1yodkq" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="zhechaxun, App_Web_i4wc5bpi" %>
 
 <%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
