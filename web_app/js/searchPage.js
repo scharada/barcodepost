@@ -65,7 +65,10 @@ function initializeSearchWindow(wHeight,wWidth) {
         modal: true
     });
 }
-
+function searchOrder() {
+    initializeSearch();
+    $('#searchWindow').window('open');
+}
 
 function getOrderByOnum() {
     var _value = $("#searchWindow").find("input[name='Onum']").val();
@@ -137,7 +140,7 @@ function getOrderBySN() {
 }
 
 
-function setSearchCaseEmpty() {
+function initializeSearch() {
     $("#searchWindow").find("input[name='Onum']").val('');
     $("#searchWindow").find("input[name='GN']").val('');
     $("#searchWindow").find("input[name='PO']").val('');
@@ -165,14 +168,6 @@ function getOrderByDateTimeRange() {
         $.messager.alert("提示", "请输入截止时间", "error");
         return;
     }
-//    if (!isTime(_fromDatetime)) {
-//        $.messager.alert("提示", "请输入正确的开始时间", "error");
-//        return;
-//    }
-//    if (!isTime(_toDatetime)) {
-//        $.messager.alert("提示", "请输入正确的截止时间", "error");
-//        return;
-//    }
     if (_fromDatetime>_toDatetime) {
         $.messager.alert("提示", "请输入正确的时间范围", "error");
         return;

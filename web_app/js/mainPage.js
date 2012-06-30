@@ -98,20 +98,18 @@ function initializeMainGrid() {
             text: '查询',
             iconCls: 'icon-search',
             handler: function () {
-                setSearchCaseEmpty();
-                $('#searchWindow').window('open');
+                searchOrder();
             }
         }, {
             id: 'btnAdd',
             text: '新增',
             iconCls: 'icon-add',
             handler: function () {
-                initializeAddOrder()
-                $('#addWindow').window('open');
+                addRows();
             }
         }, {
             id: 'btnRevise',
-            text: '编辑',
+            text: '修改',
             iconCls: 'icon-edit',
             handler: function () {
                 var row = $('#mainTable').datagrid('getSelections');
@@ -126,12 +124,10 @@ function initializeMainGrid() {
             }
         }],
         onSelect: function (rowIndex, rowData) {
-
         },
         onLoadSuccess: function () {
         },
         onDblClickRow: function () {
-            var row = $('#mainTable').datagrid('getSelected');
         }
     });
 }

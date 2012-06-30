@@ -12,23 +12,36 @@ function initializeAddWindow(wHeight, wWidth) {
         resizable: true, //改变窗口大小
         modal: true
     });
-    initializeAddOrder();
 }
 
 function initializeAddOrder() {
     $("#reviseBtn").hide();
     $("#addBtn").show();
     $("#clearBtn").show();
+
     $("#addTips").text('');
     $("#addTips").hide();
+    
     $("#onumAdd").removeAttr("disabled");
     $("#stAdd").removeAttr("disabled");
+    
+    $("#forflagAdd").hide();
+    $("#forowAdd").hide();
     $("#flagAdd").hide();
     $("#owAdd").hide();
+
+    $('#addWindow').window({
+        title: "订单录入",
+    });
 }
 
 function cleardata() {
     $('#addForm').form('clear');
+}
+
+function addRows() {
+    initializeAddOrder();
+    $('#addWindow').window('open');
 }
 
 function addOrder() {
