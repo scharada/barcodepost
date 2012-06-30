@@ -47,7 +47,7 @@
     <!-- 		查询window -->
     <div id="searchWindow" class="easyui-window" closed="true" style="width: 20px; height: 20px;">
         <div class="easyui-layout" fit="true">
-            <div region="north" border="false" style="height: 86px; padding-left: 5px; padding-top: 5px">
+            <div region="north" border="false" style="height: 76px; padding-left: 5px; padding-top: 5px">
                 <div>
                     <label for="Onum">
                         流水号:</label>
@@ -75,13 +75,13 @@
                     <label for="fromDatetime">
                         扫描时间 从:</label>
                     <input class="easyui-datetimebox" type="text" id="fromDatetime" name="fromDatetime"
-                        required="true" style="width: 200px"> </input>
+                        style="width: 200px"> </input>
                     <label for="toDatetime">
                         到:</label>
-                    <input class="easyui-datetimebox" type="text" id="toDatetime" name="toDatetime" required="true"
-                        style="width: 200px"> </input>
-                    <a href="javascript:getOrderByDateTimeRange()" class="easyui-linkbutton" plain="true" iconcls="icon-search">
-                    </a>
+                    <input class="easyui-datetimebox" type="text" id="toDatetime" name="toDatetime" style="width: 200px">
+                    </input>
+                    <a href="javascript:getOrderByDateTimeRange()" class="easyui-linkbutton" plain="true"
+                        iconcls="icon-search"></a>
                 </div>
                 <div id="serarchTips" align="center">
                 </div>
@@ -94,50 +94,80 @@
     </div>
     <!-- 		新增window -->
     <div id="addWindow" class="easyui-window" closed="true" style="width: 20px; height: 20px;
-        padding: 5px 5px 5px 5px; display:none">
+        padding: 5px 5px 5px 5px">
         <form id="addForm" novalidate="" method="post">
-        <div style="padding: 5px">
-            <label for="onumAdd">
-                流水号：</label>
-            <input class="easyui-validatebox" type="text" id="onumAdd" name="onumAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="gnAdd">
-                仓库代码：</label>
-            <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="poAdd">
-                订单号：</label>
-            <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="snAdd">
-                扫描序列号：</label>
-            <input class="easyui-validatebox" type="text" id="snAdd" name="snAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="stAdd">
-                扫描时间 ：</label>
-            <input class="easyui-datetimebox" type="text" id="stAdd" name="stAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="flagAdd">
-                修改操作标识：</label>
-            <input class="easyui-validatebox" type="text" id="flagAdd" name="flagAdd" 
-                style="width: 200px"> </input>
-        </div>
-        <div style="padding: 5px">
-            <label for="owAdd">
-                待修改流水号：</label>
-            <input class="easyui-validatebox" type="text" id="owAdd" name="owAdd" 
-                style="width: 200px"> </input>
-        </div>
+        <table width="360" border="0" style="padding: 5px 5px 5px 5px">
+            <tr>
+                <td>
+                    <label for="onumAdd">
+                        流水号：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="onumAdd" name="onumAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="gnAdd">
+                        仓库代码：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="poAdd">
+                        订单号：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="snAdd">
+                        扫描序列号：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="snAdd" name="snAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="stAdd">
+                        扫描时间 ：</label>
+                </td>
+                <td>
+                    <input class="easyui-datetimebox" type="text" id="stAdd" name="stAdd" style="width: 185px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="forflagAdd">
+                        修改操作标识：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="flagAdd" name="flagAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="forowAdd">
+                        待修改流水号：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="owAdd" name="owAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+        </table>
         <div style="margin: 10px 0;" align="center">
             <a href="javascript:void(0)" class="easyui-linkbutton" id="addBtn" onclick="addOrder()">
                 添加</a> <a href="javascript:void(0)" class="easyui-linkbutton" id="reviseBtn" onclick="reviseOrder()"
