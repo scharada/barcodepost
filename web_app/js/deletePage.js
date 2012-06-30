@@ -4,7 +4,7 @@ function deleteRows() {
     rows = $('#mainTable').datagrid('getSelections');
     data = rows.concat()
     if (rows.length == 0) {
-        $.messager.alert("系统提示", "请选择记录！")
+        $.messager.alert("提示", "请选择记录！", "info");
     }
     else {
         $.messager.confirm('订单删除', '您确定要删除选中的订单?', function (r) {
