@@ -18,6 +18,8 @@ function initializeReviseWindow(row) {
     $("#snAdd").val(row.SN);
     $("#stAdd").datetimebox('setValue', row.ST);
     $("#stAdd").attr("disabled", "disabled"); //再改成disabled 
+    $("#forflagAdd").show();
+    $("#forowAdd").show();
     $("#flagAdd").show();
     $("#owAdd").show();
     $("#flagAdd").val(row.Flag);
