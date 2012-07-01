@@ -46,10 +46,7 @@ public class BLLFactory
                 _json = BllDataGrid.ShowAllOrder(ht);
                 break;
             case "getorderby":
-                _json = BllDataGrid.GetOrderBy(ht);
-                break;
-            case "getorderbyrange":
-                _json = BllDataGrid.GetOrderBy(ht);
+                _json = BllDataGrid.GetOrderByCompose(ht);
                 break;
             case "getnull":
                 _json = BllDataGrid.GetOrderNull(ht);

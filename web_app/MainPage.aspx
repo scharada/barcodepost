@@ -23,7 +23,6 @@
             var wHeight = $(window).height();
             var wWidth = $(window).width();
             initializeMainGrid();
-            initializeSearchWindow(wHeight, wWidth);
             initializeAddWindow(wHeight, wWidth);
         });
 
@@ -35,43 +34,22 @@
         background-image: url(image/banner.jpg);">
     </div>
     <div region="center" border="false" id="centerregion">
-        <table id="mainTable">
-        </table>
-    </div>
-    <div region="south" border="false" style="height: 30px">
-        <div align="center" style="color: #2E3E53; font-family: '宋体'; font-size: 12px; padding-top: 5px;
-            padding-bottom: 5px">
-            上海鼎方电子科技有限公司 版权所有 Copyright © 2009-2012，All Rights Reserved
-        </div>
-    </div>
-    <!-- 		查询window -->
-    <div id="searchWindow" class="easyui-window" closed="true" style="width: 20px; height: 20px;">
         <div class="easyui-layout" fit="true">
-            <div region="north" border="false" style="height: 76px; padding-left: 5px; padding-top: 5px">
+            <div region="north" border="false" style="height: 36px; padding-left: 5px; padding-top: 5px">
                 <div>
                     <label for="Onum">
                         流水号:</label>
                     <input class="easyui-validatebox" type="text" name="Onum" style="width: 100px">
                     </input>
-                    <a href="javascript:getOrderByOnum()" class="easyui-linkbutton" plain="true" iconcls="icon-search">
-                    </a>
-                    <label for="GN">
-                        仓库代码:</label>
-                    <input class="easyui-validatebox" type="text" name="GN" style="width: 100px"> </input>
-                    <a href="javascript:getOrderByGN()" class="easyui-linkbutton" plain="true" iconcls="icon-search">
-                    </a>
                     <label for="PO">
                         订单号:</label>
                     <input class="easyui-validatebox" type="text" name="PO" style="width: 100px"> </input>
-                    <a href="javascript:getOrderByPO()" class="easyui-linkbutton" plain="true" iconcls="icon-search">
-                    </a>
+                    <label for="GN">
+                        仓库代码:</label>
+                    <input class="easyui-validatebox" type="text" name="GN" style="width: 100px"> </input>
                     <label for="SN">
                         序列号:</label>
                     <input class="easyui-validatebox" type="text" name="SN" style="width: 100px"> </input>
-                    <a href="javascript:getOrderBySN()" class="easyui-linkbutton" plain="true" iconcls="icon-search">
-                    </a>
-                </div>
-                <div>
                     <label for="fromDatetime">
                         扫描时间 从:</label>
                     <input class="easyui-datetimebox" type="text" id="fromDatetime" name="fromDatetime"
@@ -80,16 +58,23 @@
                         到:</label>
                     <input class="easyui-datetimebox" type="text" id="toDatetime" name="toDatetime" style="width: 200px">
                     </input>
-                    <a href="javascript:getOrderByDateTimeRange()" class="easyui-linkbutton" plain="true"
-                        iconcls="icon-search"></a>
+                    <a href="javascript:getOrderByCompose()" class="easyui-linkbutton" plain="true"
+                        iconcls="icon-search">查询</a><a href="javascript:refreshDatagrid()" class="easyui-linkbutton" plain="true"
+                        iconcls="icon-no">清除查询</a>
                 </div>
                 <div id="serarchTips" align="center">
                 </div>
             </div>
-            <div id="searchCenterRegion" region="center" split="false" border="false" style="height: 400px">
-                <table id="searchTable">
+            <div id="mainCenterRegion" region="center" split="false" border="false">
+                <table id="mainTable">
                 </table>
             </div>
+        </div>
+    </div>
+    <div region="south" border="false" style="height: 30px">
+        <div align="center" style="color: #2E3E53; font-family: '宋体'; font-size: 12px; padding-top: 5px;
+            padding-bottom: 5px">
+            上海鼎方电子科技有限公司 版权所有 Copyright © 2009-2012，All Rights Reserved
         </div>
     </div>
     <!-- 		新增window -->
@@ -117,7 +102,7 @@
                     </input>
                 </td>
             </tr>
-             <tr>
+            <tr>
                 <td>
                     <label for="gnAdd">
                         仓库代码：</label>

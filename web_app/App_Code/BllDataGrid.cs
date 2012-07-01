@@ -62,67 +62,20 @@ public class BllDataGrid
         return json;
     }
 
-    public static string GetOrderBy(Hashtable ht)
+    public static string GetOrderByCompose(Hashtable ht)
     {
+        string _Onum = ht["Onum"].ToString().Trim();
+        string _GN = ht["GN"].ToString().Trim();
+        string _PO = ht["PO"].ToString().Trim();
+        string _SN = ht["SN"].ToString().Trim();
+        string _FromDateTime = ht["FromDateTime"].ToString().Trim();
+        string _ToDateTime = ht["ToDateTime"].ToString().Trim();
 
-        string json = string.Empty;
-        if (ht["Onum"].ToString().Trim() != string.Empty)
-        {
-            json = GetOrderByOnum(ht, ht["Onum"].ToString().Trim());
-        }
-        else if (ht["GN"].ToString().Trim() != string.Empty)
-        {
-            json = GetOrderByGN(ht, ht["GN"].ToString().Trim());
-        }
-        else if (ht["PO"].ToString().Trim() != string.Empty)
-        {
-            json = GetOrderByPO(ht, ht["PO"].ToString().Trim());
-        }
-        else if (ht["SN"].ToString().Trim() != string.Empty)
-        {
-            json = GetOrderBySN(ht, ht["SN"].ToString().Trim());
-        }
-        else if (ht["FromDateTime"].ToString().Trim() != string.Empty && ht["ToDateTime"].ToString().Trim() != string.Empty)
-        {
-            json = GetOrderByRange(ht,ht["FromDateTime"].ToString().Trim(), ht["ToDateTime"].ToString().Trim());
-        }
-        return json;
-    }
-
-    private static string GetOrderByRange(Hashtable ht, string _FromDateTime, string _ToDateTime)
-    {
-        DataTable funcDs = DataModelUtility.getOrderByRange(_FromDateTime, _ToDateTime);
+        DataTable funcDs = DataModelUtility.getOrderByCompose(_Onum,_GN,_PO,_SN,_FromDateTime,_ToDateTime);
         string json = getJsonFromDataTable(funcDs, ht);
         return json;
     }
 
-    public static string GetOrderByOnum(Hashtable ht,String _Onum)
-    {
-        DataTable funcDs = DataModelUtility.getOrderByOnum(_Onum);
-        string json = getJsonFromDataTable(funcDs, ht);
-        return json;
-    }
-
-    public static string GetOrderByGN(Hashtable ht, String _GN)
-    {
-        DataTable funcDs = DataModelUtility.getOrderByGN(_GN);
-        string json = getJsonFromDataTable(funcDs, ht);
-        return json;
-    }
-
-    public static string GetOrderByPO(Hashtable ht, String _PO)
-    {
-        DataTable funcDs = DataModelUtility.getOrderByPO(_PO);
-        string json = getJsonFromDataTable(funcDs, ht);
-        return json;
-    }
-
-    public static string GetOrderBySN(Hashtable ht, String _SN)
-    {
-        DataTable funcDs = DataModelUtility.getOrderBySN(_SN);
-        string json = getJsonFromDataTable(funcDs, ht);
-        return json;
-    }
 
     public static string GetOrderNull(Hashtable ht)
     {
