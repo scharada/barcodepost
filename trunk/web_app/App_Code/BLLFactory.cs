@@ -63,6 +63,10 @@ public class BLLFactory
             case "deleteorders":
                 _json = BllDataGrid.DeleteOrders(param);
                 break;
+            case "reviseorder":
+                _json = BllDataGrid.ReviseOrder(param);
+                break;
+
                 
                 
         }

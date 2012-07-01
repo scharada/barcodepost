@@ -207,6 +207,17 @@ public class BllDataGrid
         tmp = tmp.Substring(0, tmp.Length - 1);
         tmp += ")";
         _returnString = DataModelUtility.deleteRecords(tmp);
+        _returnString = AddNewOrder(param);
+        return _returnString;
+    }
+
+    internal static string ReviseOrder(Dictionary<string, object> param)
+    {
+        string _returnString = string.Empty;
+        string running_no = string.Empty;
+        running_no = param["Onum"].ToString();
+        _returnString = DataModelUtility.deleteRecord(running_no);
+        _returnString = AddNewOrder(param);
         return _returnString;
     }
 }
