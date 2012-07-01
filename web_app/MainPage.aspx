@@ -109,21 +109,21 @@
             </tr>
             <tr>
                 <td>
-                    <label for="gnAdd">
-                        仓库代码：</label>
-                </td>
-                <td>
-                    <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" style="width: 180px">
-                    </input>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <label for="poAdd">
                         订单号：</label>
                 </td>
                 <td>
                     <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label for="gnAdd">
+                        仓库代码：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" style="width: 180px">
                     </input>
                 </td>
             </tr>
