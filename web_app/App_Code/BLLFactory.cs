@@ -63,6 +63,9 @@ public class BLLFactory
             case "reviseorder":
                 _json = BllDataGrid.ReviseOrder(param);
                 break;
+            case "login":
+                _json = BllDataGrid.Login(param);
+                break;
 
                 
                 
