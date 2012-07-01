@@ -9,6 +9,15 @@ public partial class MainPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack && !Page.IsCallback)
+        {
+            if (Session["UserName"] != null)
+            {
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
     }
 }

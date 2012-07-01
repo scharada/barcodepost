@@ -72,7 +72,7 @@ public class DataModelUtility
     public static DataTable getAllOrder()
     {
         DataTable _dt = null;
-        string _sql = Sql + " order by " + Field_RT;
+        string _sql = Sql + " order by " + Field_RT+" desc";
         _dt = DbHelperSQL.DoQueryEx("a", _sql, true);
         return _dt;
     }
@@ -131,7 +131,7 @@ public class DataModelUtility
         }
         _whereCause = _whereCause.Trim().TrimEnd("AND".ToCharArray());
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + _whereCause + " ORDER BY " + Field_RT;
+        string _sql = Sql + " WHERE " + _whereCause + " ORDER BY " + Field_RT + " DESC";
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
