@@ -128,3 +128,11 @@ function reviseRow(index){
                        }).window('open');
              
 }
+function reviseRowFromSearch(index){
+            var row = $('#searchTable').datagrid('getRows')[index];
+                    initializeReviseWindow(row);
+                       $('#addWindow').window({
+                           title: "订单修改",
+                       }).window('open');
+             
+}

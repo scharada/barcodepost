@@ -8,15 +8,17 @@ function initializeMainGrid() {
         striped: true,
         singleSelect: false,
         fitColumns: true,
-        pagination: true,
+        pagination: true, 
+        pageSize: 20,
         rownumbers: true,
         collapsible: true,
         fit: true,
         url: getFactoryUIPath(),
-        queryParams: { opertype: 'getallorder' },
+        queryParams: { OperType: 'getallorder' },
         dataType: 'json',
-        sortName: 'Onum',
-        sortOrder: 'Onum',
+        sortName: 'RT',
+        sortOrder: 'RT',
+        sortOrder: 'DESC ',
         idField: 'Onum',
         columns: [[{
             field: 'ck',
@@ -62,12 +64,14 @@ function initializeMainGrid() {
             title: '待修改流水号',
             align: 'center',
             width: 120,
+            hidden: true,
             sortable: true
         }, {
             field: 'Flag',
             title: '修改操作标识',
             align: 'center',
             width: 120,
+            hidden: true,
             sortable: true
         }, {
             field: 'action',
@@ -91,16 +95,9 @@ function initializeMainGrid() {
             text: '刷新',
             iconCls: 'icon-reload',
             handler: function () {
-                $("#mainTable").datagrid('reload');
+                refreshDatagrid();
             }
-        }, {
-            id: 'btnSearch',
-            text: '查询',
-            iconCls: 'icon-search',
-            handler: function () {
-                searchOrder();
-            }
-        }, {
+        },{
             id: 'btnAdd',
             text: '新增',
             iconCls: 'icon-add',

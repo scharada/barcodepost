@@ -98,46 +98,40 @@ public class DataModelUtility
         return _dt;
     }
 
-    public static DataTable getOrderByOnum(string _Onum)
+    internal static DataTable getOrderByCompose(string _Onum, string _GN, string _PO, string _SN, string _FromDateTime, string _ToDateTime)
     {
+        string _whereCause = string.Empty;
+        if (_Onum != string.Empty)
+        {
+            _whereCause += Field_Onum + " LIKE '%" + _Onum + "%' AND ";
+        }
+        if (_GN != string.Empty)
+        {
+            _whereCause += Field_GN + " LIKE '%" + _GN + "%'  AND ";
+        }
+        if (_PO != string.Empty)
+        {
+            _whereCause += Field_PO + " LIKE '%" + _PO + "%' AND ";
+        }
+        if (_SN != string.Empty)
+        {
+            _whereCause += Field_SN + " LIKE '%" + _SN + "%' AND ";
+        }
+        if (_FromDateTime != string.Empty)
+        {
+            string _s = _FromDateTime;
+            _FromDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
+            _whereCause += Field_RT + " >= '" + _FromDateTime + "' AND ";
+        }
+        if (_ToDateTime != string.Empty)
+        {
+            string _s = _ToDateTime;
+            _ToDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
+            _whereCause += Field_RT + " <= '" + _ToDateTime + "' AND ";
+        }
+        _whereCause = _whereCause.Trim().TrimEnd("AND".ToCharArray());
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_Onum + " LIKE '%" + _Onum + "%'" + " ORDER BY " + Field_RT;
-        _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
-        return _dt;
-    }
-
-    internal static DataTable getOrderByGN(string _GN)
-    {
-        DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_GN + " LIKE '%" + _GN + "%'" + " ORDER BY " + Field_RT;
-        _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
-        return _dt;
-    }
-
-    internal static DataTable getOrderByPO(string _PO)
-    {
-        DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_PO + " LIKE '%" + _PO + "%'" + " ORDER BY " + Field_RT;
-        _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
-        return _dt;
-    }
-
-    internal static DataTable getOrderBySN(string _SN)
-    {
-        DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_SN + " LIKE '%" + _SN + "%'" + " ORDER BY " + Field_Onum;
-        _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
-        return _dt;
-    }
-
-    internal static DataTable getOrderByRange(string _FromDateTime, string _ToDateTime)
-    {
-        string _s = _FromDateTime;
-        _FromDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
-        _s = _ToDateTime;
-        _ToDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
-        DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_RT + " >= '" + _FromDateTime + "' and " + Field_RT + "<='" + _ToDateTime + "' ORDER BY " + Field_RT;
+        string _sql = Sql + " WHERE " + _whereCause + " ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
