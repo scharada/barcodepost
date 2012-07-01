@@ -51,7 +51,7 @@
                         序列号:</label>
                     <input class="easyui-validatebox" type="text" name="SN" style="width: 100px"> </input>
                     <label for="fromDatetime">
-                        扫描时间 从:</label>
+                        接收时间 从:</label>
                     <input class="easyui-datetimebox" type="text" id="fromDatetime" name="fromDatetime"
                         style="width: 200px"> </input>
                     <label for="toDatetime">
