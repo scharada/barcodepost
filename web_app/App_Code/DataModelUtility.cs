@@ -72,7 +72,7 @@ public class DataModelUtility
     public static DataTable getAllOrder()
     {
         DataTable _dt = null;
-        string _sql = Sql + " order by " + Field_Onum;
+        string _sql = Sql + " order by " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("a", _sql, true);
         return _dt;
     }
@@ -93,7 +93,7 @@ public class DataModelUtility
     public static DataTable getOrderNull()
     {
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_Onum + " ='-1111111111'" + " ORDER BY " + Field_Onum;
+        string _sql = Sql + " WHERE " + Field_Onum + " ='-1111111111'" + " ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
@@ -101,7 +101,7 @@ public class DataModelUtility
     public static DataTable getOrderByOnum(string _Onum)
     {
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_Onum + " LIKE '%" + _Onum + "%'" + " ORDER BY " + Field_Onum;
+        string _sql = Sql + " WHERE " + Field_Onum + " LIKE '%" + _Onum + "%'" + " ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
@@ -109,7 +109,7 @@ public class DataModelUtility
     internal static DataTable getOrderByGN(string _GN)
     {
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_GN + " LIKE '%" + _GN + "%'" + " ORDER BY " + Field_Onum;
+        string _sql = Sql + " WHERE " + Field_GN + " LIKE '%" + _GN + "%'" + " ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
@@ -117,7 +117,7 @@ public class DataModelUtility
     internal static DataTable getOrderByPO(string _PO)
     {
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_PO + " LIKE '%" + _PO + "%'" + " ORDER BY " + Field_Onum;
+        string _sql = Sql + " WHERE " + Field_PO + " LIKE '%" + _PO + "%'" + " ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
@@ -137,7 +137,7 @@ public class DataModelUtility
         _s = _ToDateTime;
         _ToDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
         DataTable _dt = null;
-        string _sql = Sql + " WHERE " + Field_ST + " >= '" + _FromDateTime + "' and " + Field_ST + "<='" + _ToDateTime + "' ORDER BY " + Field_Onum;
+        string _sql = Sql + " WHERE " + Field_RT + " >= '" + _FromDateTime + "' and " + Field_RT + "<='" + _ToDateTime + "' ORDER BY " + Field_RT;
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
