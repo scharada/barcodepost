@@ -1,0 +1,258 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resourceppc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resourceppc.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\depotclientppc.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""afxres.rc""     // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\depotclient.ico"
+IDI_ICON_RED            ICON                    "res\\icon1.ico"
+IDI_ICON_GREEN          ICON                    "res\\icon2.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DEPOTCLIENT_DIALOG DIALOG  0, 0, 159, 192
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_BORDER
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "按下黄色按键开始扫描",IDC_STATIC_STATUS,7,166,87,8
+    EDITTEXT        IDC_EDT_BARCODE,41,48,104,17
+    PUSHBUTTON      "扫描",IDC_BTN_BEGIN_SCAN,9,47,25,19,WS_GROUP
+    PUSHBUTTON      "删除",IDC_BTN_DEL,106,146,40,19
+    PUSHBUTTON      "返回",IDC_BTN_SCAN_RETURN,6,146,40,19
+    LISTBOX         IDC_BARCODE_LIST,7,68,138,75,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_POLIST,41,30,104,64,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "选择订单",IDC_STATIC2,7,33,28,8
+    PUSHBUTTON      "手动增加",IDC_ADD_BARCODE,64,146,40,19
+END
+
+IDD_DEPOT_MANAGER DIALOG  0, 0, 169, 187
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "订单管理",IDC_BTN_ORDERMANAGE,25,43,115,26
+    PUSHBUTTON      "开始扫描",IDC_BTN_SCAN,25,78,115,26
+    PUSHBUTTON      "结果查询",IDC_BUTTON3,25,110,115,26,WS_DISABLED
+    PUSHBUTTON      "上传数据",IDC_UPLOAD,25,142,115,26
+END
+
+IDD_DEPOT_LOGIN DIALOG  0, 0, 127, 140
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 12, "MS Shell Dlg"
+BEGIN
+    COMBOBOX        IDC_COMB_DEPOTLIST,36,43,71,56,CBS_DROPDOWNLIST | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "仓库",IDC_STATIC,17,46,18,8
+    EDITTEXT        IDC_PASSWD,36,71,71,12,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "密码",IDC_STATIC,17,74,19,8
+    DEFPUSHBUTTON   "登录",IDC_BTN_LOGIN,32,91,71,29
+END
+
+IDD_ORDER_MANAGE DIALOG  0, 0, 163, 200
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "新增",IDC_BTN_NEW,4,42,47,21
+    PUSHBUTTON      "修改",IDC_BTN_MOD,57,42,47,21
+    PUSHBUTTON      "删除",IDC_BTN_DEL,109,42,47,21
+    LISTBOX         IDC_ORDER_LIST,4,63,152,109,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "返回",IDC_BTN_RETURN,4,172,47,23
+END
+
+IDD_PO_EDIT DIALOG  0, 0, 158, 154
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "订单号"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    EDITTEXT        IDC_PO_NO,7,51,144,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",ID_OK,7,112,144,34
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "wanghl"
+            VALUE "FileDescription", "Depo Client"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "depotclient.exe"
+            VALUE "LegalCopyright", "wanghl"
+            VALUE "OriginalFilename", "depotclient.exe"
+            VALUE "ProductName", "Depo Client"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DEPOTCLIENT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 152
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_DEPOT_MANAGER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 180
+    END
+
+    IDD_DEPOT_LOGIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 122
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    IDD_ORDER_MANAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 156
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    IDD_PO_EDIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 151
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 146
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\depotclientppc.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "afxres.rc"     // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
