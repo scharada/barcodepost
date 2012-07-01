@@ -68,39 +68,8 @@ function reviseOrder() {
     $("#addTips").text('');
     $("#addTips").hide();
     
-    //删除现有的
-    var _onumAdd = $.trim($("#onumAdd").val());
     var _order = new Object();
-    _order.OperType = "deleteOrder";
-    _order.Onum = _onumAdd;
-    var json = JSON.stringify(_order);
-    $.ajax({
-        url: getFactoryUIPath(),
-        type: "post", //以post的方式（该方式能传大量数据）
-        dataType: "text", //返回的类型（即下面sucess：中data的类型）
-        data: json,
-        async: false, //同步进行
-        success: function (data) {
-            if (data == "ok") {
-                $("#addTips").text('删除成功！');
-                $("#addTips").show();
-                cleardata();
-                //重新载入数据
-                $("#mainTable").datagrid('reload');
-            } else {
-                $("#addTips").text('删除失败！');
-                $("#addTips").show();
-            }
-        },
-        error: function (data) {
-            $("#addTips").text('删除失败！');
-            $("#addTips").show();
-        }
-    });
-
-    //增加现有的
-    var _order = new Object();
-    _order.OperType = "addOrder";
+    _order.OperType = "reviseorder";
     _order.Onum = _onumAdd;
     _order.GN = _gnAdd;
     _order.PO = _poAdd;
@@ -117,19 +86,16 @@ function reviseOrder() {
         async: false, //同步进行
         success: function (data) {
             if (data == "ok") {
-                $("#addTips").text('修改成功！');
-                $("#addTips").show();
+                $.messager.alert("提示", "修改订单信息成功", "info");
                 cleardata();
                 //重新载入数据
                 $("#mainTable").datagrid('reload');
             } else {
-                $("#addTips").text('修改失败！');
-                $("#addTips").show();
+            $.messager.alert("提示", "修改订单信息失败", "error");
             }
         },
         error: function (data) {
-            $("#addTips").text('修改失败！');
-            $("#addTips").show();
+             $.messager.alert("提示", "修改订单信息失败", "error");
         }
     });
     //关闭
@@ -150,7 +116,7 @@ function reviseRows() {
                        }).window('open');
                 }
                 else{
-                 $.messager.alert("提示", "请要修改的订单", "info");
+                 $.messager.alert("提示", "请选择要修改的订单", "info");
         return;
                 }
 }
