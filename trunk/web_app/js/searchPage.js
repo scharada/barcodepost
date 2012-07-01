@@ -9,7 +9,6 @@ function initializeSearchTable() {
         striped: true,
         singleSelect: true,
         fitColumns: true,
-        pagination: false,
         rownumbers: true,
         collapsible: true,
         singleSelect: true,
@@ -119,7 +118,7 @@ function getOrderByPO() {
     queryParams.GN = "";
     queryParams.PO = _value;
     queryParams.SN = "";
-    $("#searchTable").datagrid('getRows');
+    $("#searchTable").datagrid('reload');
 }
 
 function getOrderBySN() {

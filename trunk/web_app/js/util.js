@@ -45,20 +45,19 @@ function key(e) {
         return false;
     }
     //屏蔽退格删除键
-    if (keynum == 116) {
-        return false;
-    }
-    if (keynum == 82) {
-        return false;
-    }
+//    if (keynum == 116) {
+//        return false;
+//    }
+//    if (keynum == 82) {
+//        return false;
+//    }
 
     if ((window.event.altKey) && ((keynum == 37) || //屏蔽Alt+方向键←
 	(keynum == 39))) {//屏蔽Alt+方向键→
         alert("不准你使用ALT+方向键前进或后退网页！");
         event.returnValue = false;
     }
-    if ((event.keyCode == 8) || //屏蔽退格删除键
-	(event.keyCode == 116) || //屏蔽F5刷新键
+    if ((event.keyCode == 116) || //屏蔽F5刷新键
 	(event.ctrlKey && event.keyCode == 82)) {//Ctrl+R
         event.keyCode = 0;
         event.returnValue = false;

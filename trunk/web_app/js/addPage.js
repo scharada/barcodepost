@@ -15,6 +15,7 @@ function initializeAddWindow(wHeight, wWidth) {
 }
 
 function initializeAddOrder() {
+    cleardata();
     $("#reviseBtn").hide();
     $("#addBtn").show();
     $("#clearBtn").show();
@@ -36,7 +37,13 @@ function initializeAddOrder() {
 }
 
 function cleardata() {
-    $('#addForm').form('clear');
+    $("#onumAdd").val('');
+    $("#gnAdd").val('');
+    $("#poAdd").val('');
+    $("#snAdd").val('');
+    $("#flagAdd").val('');
+    $("#owAdd").val('');
+    $("#stAdd").datetimebox('setValue','');
 }
 
 function addRows() {
@@ -51,8 +58,8 @@ function addOrder() {
     var _poAdd = $.trim($("#poAdd").val());
     var _snAdd = $.trim($("#snAdd").val());
     var _stAdd = $.trim($("#stAdd").datetimebox('getValue'));
-    var _flagAdd = 0;
-    var _owAdd = 0;
+    var _flagAdd = "0";
+    var _owAdd = "0";
 
     if (_onumAdd == "") {
         $("#addTips").text('流水号不能为空');
