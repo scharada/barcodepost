@@ -173,4 +173,22 @@ public class BllDataGrid
         _returnString = AddNewOrder(param);
         return _returnString;
     }
+
+    internal static string Login(Dictionary<string, object> param)
+    {
+        string _returnString = string.Empty;
+        string _userName = string.Empty;
+        string _passWord = string.Empty;
+        _userName = param["userName"].ToString();
+        _passWord = param["passWord"].ToString();
+        if (new LogInBLL().VaiLogInInfo(_userName, _passWord))
+        {
+            _returnString = "ok";
+        }
+        else
+        {
+            _returnString = "error";
+        }
+        return _returnString;
+    }
 }

@@ -3,8 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
     <title>惠而浦货物条码采集监控系统</title>
     <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
@@ -18,57 +17,85 @@
     <script type="text/javascript" src="js/addPage.js"></script>
     <script type="text/javascript" src="js/revisePage.js"></script>
     <script type="text/javascript" src="js/mainPage.js"></script>
-    <style type="text/css">
+     <script type="text/javascript">
+         function initializelogWindow() {
+             $('#logWindow').window({
+                 width: 380,
+                 height: 160,
+                 title: "用户登录",
+                 iconCls: 'icon-add', //图标class  
+                 collapsible: false, //折叠
+                 minimizable: false, //最小化
+                 maximizable: false, //最大化
+                 resizable: false, //改变窗口大小
+                 closable: false,
+                 modal: true
+             });
+         }
+         function LogIn() {
+             var userName = $("#userName").val();
+             var passWord = $("#passWord").val();
+             var _user = new Object();
+             _user.OperType = "login";
+             _user.userName = userName;
+             _user.passWord = passWord;
+             var json = JSON.stringify(_user);
 
-        .style1
-        {
-            width: 144px;
-        }
-    </style>
+             $.ajax({
+                 url: getFactoryUIPath(),
+                 type: "post", //以post的方式（该方式能传大量数据）
+                 dataType: "text", //返回的类型（即下面sucess：中data的类型）
+                 data: json,
+                 async: true, //异步进行
+                 success: function (data) {
+                     if (data == "ok") {
+                         window.navigate("MainPage.aspx");
+                     } else {
+                         $.messager.alert("提示", "登录失败", "error");
+                     }
+                 },
+                 error: function (data) {
+                     $.messager.alert("提示", "登录失败", "error");
+                 }
+             });
+         }
+         $(function () {
+             initializelogWindow();
+             $('#userName').attr("disabled", "disabled"); //再改成disabled  
+         });
+    </script>
 </head>
 <body>
-    <form id="form2" runat="server">
-    <div>
-    
-        <table style="width:100%;">
+    <div id="logWindow" class="easyui-window" closed="false" style="width: 400px; height: 200px;
+        padding: 5px 5px 5px 5px">
+        <table width="360" border="0" style="padding: 5px 5px 5px 5px">
             <tr>
-                <td class="style1">
-                    登录首页</td>
                 <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="style1">
-                    账号</td>
-                <td>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <label for="userName">
+                        用户名：</label>
                 </td>
                 <td>
-                    &nbsp;</td>
+                    <input class="easyui-validatebox" type="text" value="admin" id="userName" name="userName"
+                        style="width: 240px"> </input>
+                </td>
             </tr>
             <tr>
-                <td class="style1">
-                    密码</td>
                 <td>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
+                    <label for="passWord">
+                        密码：</label>
                 </td>
                 <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="style1">
-                    &nbsp;</td>
-                <td>
-                    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="登录" />
+                    <input id="passWord" name="passWord" style="width: 240px" validtype="length[3,32]"
+                        class="easyui-validatebox" required="true" type="password" value="" />
                 </td>
-                <td>
-                    &nbsp;</td>
             </tr>
         </table>
-    
+        <div style="margin: 10px 0;" align="center">
+            <a href="javascript:void(0)" class="easyui-linkbutton" id="loginButton" onclick="LogIn()"
+                iconcls="icon-ok">登录</a>
+        </div>
+        <div id="loginTips" align="center" style="color: #FF0000; display: none">
+        </div>
     </div>
-    </form>
 </body>
 </html>
