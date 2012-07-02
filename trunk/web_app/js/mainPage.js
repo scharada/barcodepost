@@ -8,7 +8,7 @@ function initializeMainGrid() {
         striped: true,
         singleSelect: false,
         fitColumns: true,
-        pagination: true, 
+        pagination: true,
         pageSize: 20,
         rownumbers: true,
         collapsible: true,
@@ -31,7 +31,7 @@ function initializeMainGrid() {
             sortable: true
         }, {
             field: 'PO',
-            title: '订单号',
+            title: '发运单号',
             align: 'center',
             width: 120,
             sortable: true
@@ -97,7 +97,7 @@ function initializeMainGrid() {
             handler: function () {
                 refreshDatagrid();
             }
-        },{
+        }, {
             id: 'btnAdd',
             text: '新增',
             iconCls: 'icon-add',
@@ -118,6 +118,13 @@ function initializeMainGrid() {
             iconCls: 'icon-remove',
             handler: function () {
                 deleteRows();
+            }
+        }, '-', {
+            id: 'btnEditPassword',
+            text: '修改密码',
+            iconCls: 'icon-help',
+            handler: function () {
+                $.messager.alert('提示', '暂未实现', 'error');
             }
         }],
         onSelect: function (rowIndex, rowData) {

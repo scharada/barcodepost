@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>惠而浦货物条码采集监控系统</title>
@@ -17,52 +16,55 @@
     <script type="text/javascript" src="js/addPage.js"></script>
     <script type="text/javascript" src="js/revisePage.js"></script>
     <script type="text/javascript" src="js/mainPage.js"></script>
-     <script type="text/javascript">
-         function initializelogWindow() {
-             $('#logWindow').window({
-                 width: 380,
-                 height: 160,
-                 title: "用户登录",
-                 iconCls: 'icon-add', //图标class  
-                 collapsible: false, //折叠
-                 minimizable: false, //最小化
-                 maximizable: false, //最大化
-                 resizable: false, //改变窗口大小
-                 closable: false,
-                 modal: true
-             });
-         }
-         function LogIn() {
-             var userName = $("#userName").val();
-             var passWord = $("#passWord").val();
-             var _user = new Object();
-             _user.OperType = "login";
-             _user.userName = userName;
-             _user.passWord = passWord;
-             var json = JSON.stringify(_user);
+    <script type="text/javascript">
+        function initializelogWindow() {
+            $('#logWindow').window({
+                width: 380,
+                height: 160,
+                title: "用户登录",
+                iconCls: 'icon-add', //图标class  
+                collapsible: false, //折叠
+                minimizable: false, //最小化
+                maximizable: false, //最大化
+                resizable: false, //改变窗口大小
+                closable: false,
+                modal: true
+            });
+        }
+        function Logerror() {
+            $.messager.alert('提示', '登录失败', 'error');
+        }
+        function LogIn() {
 
-             $.ajax({
-                 url: getFactoryUIPath(),
-                 type: "post", //以post的方式（该方式能传大量数据）
-                 dataType: "text", //返回的类型（即下面sucess：中data的类型）
-                 data: json,
-                 async: true, //异步进行
-                 success: function (data) {
-                     if (data == "ok") {
-                         window.navigate("MainPage.aspx");
-                     } else {
-                         $.messager.alert("提示", "登录失败", "error");
-                     }
-                 },
-                 error: function (data) {
-                     $.messager.alert("提示", "登录失败", "error");
-                 }
-             });
-         }
-         $(function () {
-             initializelogWindow();
-             $('#userName').attr("disabled", "disabled"); //再改成disabled  
-         });
+            var userName = $("#userName").val();
+            var passWord = $("#passWord").val();
+            if (passWord == "")
+                $.messager.alert('提示', '密码不能为空', 'error');
+
+            $.ajax({
+                url: getLoginPath(),
+                type: "post", //以post的方式（该方式能传大量数据）
+                dataType: "text", //返回的类型（即下面sucess：中data的类型）
+                data: "userName=" + userName + "&&passWord=" + passWord,
+                cache: false,
+                async: true, //异步进行
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data == "ok")
+                        window.location.href = "MainPage.aspx";
+                    else
+                        $.messager.alert('提示', '登录失败', 'error');
+                },
+                error: function (data) {
+                    $.messager.alert('提示', '登录失败', 'error');
+                }
+            });
+        }
+        $(function () {
+            initializelogWindow();
+            $('#userName').attr("disabled", "disabled"); //再改成disabled  
+        });
     </script>
 </head>
 <body>
