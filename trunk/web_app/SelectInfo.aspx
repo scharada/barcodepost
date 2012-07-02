@@ -66,7 +66,7 @@
                 <td class="style1">
                     &nbsp;</td>
                 <td class="style3">
-                    订单号</td>
+                    发运单号</td>
                 <td class="style2" colspan="2">
                     <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
                     <asp:Label ID="Label4" runat="server" Text="Label" Visible="False"></asp:Label>
@@ -152,7 +152,7 @@
                 <td class="style3">
                     &nbsp;</td>
                 <td class="style2">
-                    订单号<asp:TextBox ID="txtPO" runat="server"></asp:TextBox>
+                    发运单号<asp:TextBox ID="txtPO" runat="server"></asp:TextBox>
                 </td>
                 <td class="style2">
                     序列号<asp:TextBox ID="txtSN" runat="server"></asp:TextBox>

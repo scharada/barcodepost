@@ -70,7 +70,7 @@ function addOrder() {
         $("#addTips").show();
         return;
     } else if (_poAdd == "") {
-        $("#addTips").text('订单号不能为空');
+        $("#addTips").text('发运单号不能为空');
         $("#addTips").show();
         return;
     } else if (_snAdd == "") {

@@ -21,7 +21,7 @@ public partial class deleteGarbageInfo : System.Web.UI.Page
             Garbage gb = new GarbageBLL().GetGaibageInfoByOnum(this.TextBox1.Text);
             this.Label1.Text = "流水号" + gb.Onum;
             this.Label1.Text += "<br>仓库代码" + gb.GN;
-            this.Label1.Text += "<br>订单号" + gb.PO_;
+            this.Label1.Text += "<br>发运单号" + gb.PO_;
             this.Label1.Text += "<br>序列号" + gb.SN;
             this.Label1.Text += "<br>录入时间" + gb.RT;
             this.Label1.Text += "<br>重复流水号" + gb.OW;

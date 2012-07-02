@@ -23,8 +23,8 @@ public partial class SelectInfo : System.Web.UI.Page
 
             this.Label1.Text = "流水号" + gb.Onum;
             this.Label1.Text += "<br>仓库代码" + gb.GN;
-            this.Label1.Text += "<br>订单号" + gb.PO_;
-            this.Label1.Text += "<br>订单号" + gb.SN;
+            this.Label1.Text += "<br>发运单号" + gb.PO_;
+            this.Label1.Text += "<br>发运单号" + gb.SN;
             this.Label1.Text += "<br>发送时间" + gb.ST;
             this.Label1.Text += "<br>接收时间见" + gb.RT;
             this.Label1.Text += "<br>重复流水号" + gb.OW;
@@ -47,8 +47,8 @@ public partial class SelectInfo : System.Web.UI.Page
             Garbage gb = new GarbageBLL().GarbageInfoByGn(this.TextBox3.Text);
             this.Label1.Text = "流水号" + gb.Onum;
             this.Label1.Text += "<br>仓库代码" + gb.GN;
-            this.Label1.Text += "<br>订单号" + gb.PO_;
-            this.Label1.Text += "<br>订单号" + gb.SN;
+            this.Label1.Text += "<br>发运单号" + gb.PO_;
+            this.Label1.Text += "<br>发运单号" + gb.SN;
             this.Label1.Text += "<br>发送时间" + gb.ST;
             this.Label1.Text += "<br>接收时间见" + gb.RT;
             this.Label1.Text += "<br>重复流水号" + gb.OW;
@@ -71,8 +71,8 @@ public partial class SelectInfo : System.Web.UI.Page
             Garbage gb = new GarbageBLL().GarbageInfoBYPo(this.TextBox4.Text);
             this.Label1.Text = "流水号" + gb.Onum;
             this.Label1.Text += "<br>仓库代码" + gb.GN;
-            this.Label1.Text += "<br>订单号" + gb.PO_;
-            this.Label1.Text += "<br>订单号" + gb.SN;
+            this.Label1.Text += "<br>发运单号" + gb.PO_;
+            this.Label1.Text += "<br>发运单号" + gb.SN;
             this.Label1.Text += "<br>发送时间" + gb.ST;
             this.Label1.Text += "<br>接收时间见" + gb.RT;
             this.Label1.Text += "<br>重复流水号" + gb.OW;
@@ -81,7 +81,7 @@ public partial class SelectInfo : System.Web.UI.Page
         {
             this.Label4.Visible = true;
             this.Label1.Visible = false;
-            this.Label4.Text = "该订单号不存在，请重新输入";
+            this.Label4.Text = "该发运单号不存在，请重新输入";
         }
     }
     protected void Button4_Click(object sender, EventArgs e)
@@ -95,8 +95,8 @@ public partial class SelectInfo : System.Web.UI.Page
         this.Label5.Visible = false;
         this.Label1.Text = "流水号" + gb.Onum;
         this.Label1.Text += "<br>仓库代码" + gb.GN;
-        this.Label1.Text += "<br>订单号" + gb.PO_;
-        this.Label1.Text += "<br>订单号" + gb.SN;
+        this.Label1.Text += "<br>发运单号" + gb.PO_;
+        this.Label1.Text += "<br>发运单号" + gb.SN;
         this.Label1.Text += "<br>发送时间" + gb.ST;
         this.Label1.Text += "<br>接收时间见" + gb.RT;
         this.Label1.Text += "<br>重复流水号" + gb.OW;
@@ -105,7 +105,7 @@ public partial class SelectInfo : System.Web.UI.Page
         {
             this.Label5.Visible = true;
             this.Label1.Visible = false;
-            this.Label5.Text = "该订单号不存在，请重新输入";
+            this.Label5.Text = "该发运单号不存在，请重新输入";
 
         }
        

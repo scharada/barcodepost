@@ -15,7 +15,7 @@ public class DataModelUtility
     public static string Field_Onum = "Onum";
 
     /// <summary>
-    /// 订单号
+    /// 发运单号
     /// </summary>
     public static string Field_PO = "PO#";
 
@@ -183,7 +183,7 @@ public class DataModelUtility
             {
                 gb.GN = DEFAULT_STRING;
             }
-            gb.PO_ = po_no;//订单号
+            gb.PO_ = po_no;//发运单号
             gb.SN = barcode_no;//序列号
             gb.ST = Convert.ToDateTime(scan_time);//扫描时间
             //本记录的接收时间按照当前页面的提交时间
