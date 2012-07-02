@@ -164,7 +164,7 @@
             <td class="style3">
                 &nbsp;</td>
             <td class="style5">
-                订单号</td>
+                发运单号</td>
             <td>
                 &nbsp;</td>
             <td>

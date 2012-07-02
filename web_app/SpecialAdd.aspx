@@ -73,7 +73,7 @@
                 <td class="style1">
                     &nbsp;</td>
                 <td class="style2">
-                    订单号</td>
+                    发运单号</td>
                 <td colspan="2">
                     <asp:TextBox ID="TextBoxPo" runat="server" 
                         ontextchanged="TextBoxPo_TextChanged"></asp:TextBox>

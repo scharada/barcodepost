@@ -34,7 +34,7 @@ public partial class Default2 : System.Web.UI.Page
         string _returnString = string.Empty;
         //第一部分，接收手持端参数
         string running_no = "";       //流水号
-        string po_no = "";          //订单号
+        string po_no = "";          //发运单号
         string warehouse_code = ""; //仓库码
         string barcode_no = "";       //条码号
         string scan_time = "";        //扫描时间

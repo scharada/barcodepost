@@ -95,7 +95,7 @@
             <tr>
                 <td>
                     <label for="poAdd">
-                        订单号：</label>
+                        发运单号：</label>
                 </td>
                 <td>
                     <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" style="width: 180px">
