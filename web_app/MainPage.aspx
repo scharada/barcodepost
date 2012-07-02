@@ -42,7 +42,7 @@
                     <input class="easyui-validatebox" type="text" name="Onum" style="width: 100px">
                     </input>
                     <label for="PO">
-                        订单号:</label>
+                        发运单号:</label>
                     <input class="easyui-validatebox" type="text" name="PO" style="width: 100px"> </input>
                     <label for="GN">
                         仓库代码:</label>
@@ -74,7 +74,7 @@
     <div region="south" border="false" style="height: 30px">
         <div align="center" style="color: #2E3E53; font-family: '宋体'; font-size: 12px; padding-top: 5px;
             padding-bottom: 5px">
-            上海鼎方电子科技有限公司 版权所有 Copyright © 2009-2012，All Rights Reserved
+            上海鼎方电子科技有限公司 版权所有 Copyright © 2009-2012 All Rights Reserved
         </div>
     </div>
     <!-- 		新增window -->
