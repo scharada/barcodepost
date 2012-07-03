@@ -14,6 +14,9 @@ function getFactoryUIPath() {
 function getLoginPath() {
     return getGlobalVirtualDirectoryName() + "/PatternUI/Login.ashx";
 }
+function getEditPasswordPath() {
+    return getGlobalVirtualDirectoryName() + "/PatternUI/EditPassword.ashx";
+}
 
 
 //禁用右键、文本选择功能、复制按键

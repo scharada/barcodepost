@@ -1,10 +1,11 @@
-﻿<%@ WebHandler Language="C#" Class="Login" %>
+﻿<%@ WebHandler Language="C#" Class="EditPassword" %>
 
 using System;
 using System.Web;
 using System.Web.SessionState;
 
-public class Login : IHttpHandler, IRequiresSessionState
+
+public class EditPassword : IHttpHandler, IRequiresSessionState
 {
     
     public void ProcessRequest (HttpContext context) {
@@ -17,9 +18,8 @@ public class Login : IHttpHandler, IRequiresSessionState
                 string _userName = context.Request.Form["userName"].ToString().Trim();
                 string _passWord = context.Request.Form["passWord"].ToString();
 
-                if (PasswordUtil.EncryptPwd(_userName, _passWord) == "ok_check")
+                if (PasswordUtil.EditPassword(_userName, _passWord) == "ok_edit")
                 {
-                    context.Session["userName"] = _userName;
                     json = "ok";
                 }
                 else

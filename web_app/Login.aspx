@@ -45,7 +45,7 @@
                 url: getLoginPath(),
                 type: "post", //以post的方式（该方式能传大量数据）
                 dataType: "text", //返回的类型（即下面sucess：中data的类型）
-                data: "userName=" + userName + "&&passWord=" + passWord,
+                data: "userName=" + userName + "&passWord=" + passWord,
                 cache: false,
                 async: true, //异步进行
                 beforeSend: function () {

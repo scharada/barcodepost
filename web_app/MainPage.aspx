@@ -24,6 +24,7 @@
             var wWidth = $(window).width();
             initializeMainGrid();
             initializeAddWindow(wHeight, wWidth);
+            initializeEditWindow(wHeight, wWidth);
         });
 
     </script>
@@ -76,6 +77,46 @@
             padding-bottom: 5px">
             上海鼎方电子科技有限公司 版权所有 Copyright © 2009-2012 All Rights Reserved
         </div>
+    </div>
+    
+    <!-- 		修改密码 -->
+    <div id="EditWindow" class="easyui-window" closed="true" style="width: 20px; height: 20px;
+        padding: 5px 5px 5px 5px">
+        <form id="EditForm" novalidate="" method="post">
+        <table width="360" border="0" style="padding: 5px 5px 5px 5px">
+            <tr>
+                <td>
+                    <label for="uesrName">
+                        用户名：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" id="uesrName" name="uesrName" style="width: 180px">
+                    </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="newPassword">
+                        新密码：</label>
+                </td>
+                <td>
+                 <input id="newPassword" name="newPassword" validType="length[3,10]" class="easyui-validatebox" required="true" type="password" style="width: 180px" value=""/>
+<br/></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="newPasswordAgain">
+                        重复新密码：</label>
+                </td>
+                <td>
+<input type="password" name="newPasswordAgain" id="newPasswordAgain" required="true" class="easyui-validatebox"  validType="equalTo['#newPassword']" style="width: 180px" invalidMessage="两次输入密码不匹配"/>
+                </td>
+            </tr>
+        </table>
+        <div style="margin: 10px 0;" align="center">
+           <a href="javascript:void(0)" class="easyui-linkbutton" id="editPasswordButton" onclick="editPassword()">修改</a> 
+        </div>
+        </form>
     </div>
     <!-- 		新增window -->
     <div id="addWindow" class="easyui-window" closed="true" style="width: 20px; height: 20px;

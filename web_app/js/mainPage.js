@@ -124,7 +124,7 @@ function initializeMainGrid() {
             text: '修改密码',
             iconCls: 'icon-help',
             handler: function () {
-                $.messager.alert('提示', '暂未实现', 'error');
+                initializeEditPassword();
             }
         }],
         onSelect: function (rowIndex, rowData) {

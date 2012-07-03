@@ -3,8 +3,8 @@ function initializeAddWindow(wHeight, wWidth) {
         width: 400,
         height: 400,
         title: "订单录入",
-        top: (wHeight - 400) * 0.5,
         left: (wWidth - 400) * 0.5,
+        top: (wHeight - 400) * 0.5,
         iconCls: 'icon-add', //图标class  
         collapsible: false, //折叠
         minimizable: false, //最小化
@@ -13,6 +13,73 @@ function initializeAddWindow(wHeight, wWidth) {
         modal: true
     });
 }
+
+function initializeEditWindow(wHeight, wWidth) {
+    $('#EditWindow').window({
+        width: 400,
+        height: 300,
+        title: "密码修改",
+        left: (wWidth - 400) * 0.5,
+        top: (wHeight - 300) * 0.5,
+        iconCls: 'icon-add', //图标class  
+        collapsible: false, //折叠
+        minimizable: false, //最小化
+        maximizable: false, //最大化
+        resizable: true, //改变窗口大小
+        modal: true
+    });
+}
+
+function initializeEditPassword(){
+    $("#uesrName").val('admin');
+    $("#uesrName").attr("disabled", "disabled"); //再改成disabled  
+    $("#newPassword").val('');
+    $("#newPasswordAgain").val('');
+    $('#EditWindow').window('open');
+}
+
+function editPassword()
+{
+    var np =  $("#newPassword").val();
+    var npa = $("#newPasswordAgain").val();
+    var userName =$("#uesrName").val()
+    if(np.length<3||np.length>10)
+    {
+             $.messager.alert("提示", "请输入正确的密码", "error");
+             return;
+    }
+    if(npa.length<3||npa.length>10)
+    {
+             $.messager.alert("提示", "请输入正确的密码", "error");
+             return;
+    }
+    if(np!=npa)
+     {
+             $.messager.alert("提示", "请输入相同的密码", "error");
+             return;
+    }
+      $.ajax({
+                url: getEditPasswordPath(),
+                type: "post", //以post的方式（该方式能传大量数据）
+                dataType: "text", //返回的类型（即下面sucess：中data的类型）
+                data: "userName=" + userName + "&passWord=" + np,
+                cache: false,
+                async: true, //异步进行
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data == "ok"){
+                        $.messager.alert('提示', '密码修改成功', 'info'); 
+                        $('#EditWindow').window('close');}
+                    else
+                        $.messager.alert('提示', '密码修改失败', 'error');
+                },
+                error: function (data) {
+                    $.messager.alert('提示', '密码修改失败', 'error');
+                }
+            });
+}
+
 
 function initializeAddOrder() {
     cleardata();
