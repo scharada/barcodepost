@@ -112,7 +112,7 @@ function reviseRows() {
                 if (row != null&&row.length>0) {
                     initializeReviseWindow(row);
                        $('#addWindow').window({
-                           title: "订单修改",
+                           title: "订单修改"
                        }).window('open');
                 }
                 else{
@@ -124,7 +124,7 @@ function reviseRow(index){
             var row = $('#mainTable').datagrid('getRows')[index];
                     initializeReviseWindow(row);
                        $('#addWindow').window({
-                           title: "订单修改",
+                           title: "订单修改"
                        }).window('open');
              
 }
@@ -132,7 +132,7 @@ function reviseRowFromSearch(index){
             var row = $('#searchTable').datagrid('getRows')[index];
                     initializeReviseWindow(row);
                        $('#addWindow').window({
-                           title: "订单修改",
+                           title: "订单修改"
                        }).window('open');
              
 }
