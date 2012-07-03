@@ -49,7 +49,15 @@ public class DataModelUtility
     /// </summary>
     public static string Field_Flag = "Flag";
 
+    public static string Field_Id = "id";
+
+    public static string Field_Password = "pwd";
+
+    public static string Field_Salt = "salt";
+
     public static string Table_Garbage = "Garbage";
+
+    public static string Table_Manager = "manger";
 
     public static string DEFAULT_STRING = "NULL";
 
