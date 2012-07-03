@@ -17,10 +17,10 @@ function initializeAddWindow(wHeight, wWidth) {
 function initializeEditWindow(wHeight, wWidth) {
     $('#EditWindow').window({
         width: 400,
-        height: 300,
+        height: 200,
         title: "密码修改",
         left: (wWidth - 400) * 0.5,
-        top: (wHeight - 300) * 0.5,
+        top: (wHeight - 200) * 0.5,
         iconCls: 'icon-add', //图标class  
         collapsible: false, //折叠
         minimizable: false, //最小化
