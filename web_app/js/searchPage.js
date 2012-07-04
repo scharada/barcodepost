@@ -6,6 +6,8 @@ function refreshDatagrid() {
     $("#fromDatetime").datetimebox('setValue', '');
     $("#toDatetime").datetimebox('setValue', '');
     getOrderAll();
+    //导出excel不可用
+    $("#btnExportExcel").linkbutton('disable');
 }
 
 function getOrderAll() {
@@ -49,6 +51,7 @@ function getOrderByCompose() {
     queryParams.FromDateTime = _fromDatetime;
     queryParams.ToDateTime = _toDatetime;
     $("#mainTable").datagrid('reload');
-
+    //导出excel可用
+    $("#btnExportExcel").linkbutton('enable');
 }
 

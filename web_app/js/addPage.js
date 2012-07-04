@@ -36,34 +36,15 @@ window.open('ExportExcel.aspx?fileName=201274260674','下载订单', 'height=100
 }
 
 function initializeExportExcel() {
-
-goToExportExcel();
-//	var row = $('#mainTable').datagrid('getSelections');
-//	if(row != null && row.length > 0) {
-//    var _order = new Object();
-//	_order.OperType = "exportAllOrder";
-//	_order.Onum = "";
-//    	var json = JSON.stringify(_order);
-
-//	$.ajax({
-//		url : getFactoryUIPath(),
-//		type : "post", //以post的方式（该方式能传大量数据）
-//		dataType : "text", //返回的类型（即下面sucess：中data的类型）
-//		data : json,
-//		async : true, //异步进行
-//		success : function(data) {
-//			if(data == "ok") {
-//			} else {
-//			}
-//		},
-//		error : function(data) {
-//		}
-//	});
-
-//	} else {
-//		$.messager.alert("提示", "请选择要导出的订单", "info");
-//		return;
-//	}
+    var _O = $("#centerregion").find("input[name='Onum']").val();
+    var _G = $("#centerregion").find("input[name='GN']").val();
+    var _P = $("#centerregion").find("input[name='PO']").val();
+    var _S = $("#centerregion").find("input[name='SN']").val();
+    var _F = $.trim($("#fromDatetime").datetimebox('getValue'));
+    var _T = $.trim($("#toDatetime").datetimebox('getValue'));
+    _F = _F.replace(/-/g, "").replace(/:/g, "").replace(/\s+/g, "");
+    _T = _T.replace(/-/g, "").replace(/:/g, "").replace(/\s+/g, ""); 
+    window.open('ExportExcel.aspx?O='+_O+"&&G="+_G+"&&P="+_P+"&&S="+_S+"&&F="+_F+"&&T="+_T,'下载订单', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 }
 
 function initializeEditPassword() {

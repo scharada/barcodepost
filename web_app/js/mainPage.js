@@ -141,5 +141,6 @@ function initializeMainGrid() {
         onDblClickRow: function () {
         }
     });
+    $("#btnExportExcel").linkbutton('disable');
 }
 

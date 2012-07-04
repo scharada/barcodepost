@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Threading;
 using System.IO;
+using System.Data;
 
 /// <summary>
 ///TemplateUtil 的摘要说明
@@ -23,18 +24,27 @@ public class TemplateUtil
     public static string CreateNewOrderExportExcel()
     {
         string from_path = HttpRuntime.AppDomainAppPath + m_TemplatePath;
-        string to_path = HttpRuntime.AppDomainAppPath + m_TemplatePathTaget + GetNumberRandom() + ".xls";
+        string fileName = GetNumberRandom();
+        string to_path = HttpRuntime.AppDomainAppPath + m_TemplatePathTaget + fileName + ".xls";
         string b = string.Empty;
         try
         {
             FileHelper.IsExistFile(to_path);
             FileHelper.Copy(from_path, to_path);
-            b = to_path;
+            b = fileName;
         }
         catch (Exception)
         {
             throw;
         }
+        return b;
+    }
+
+    public static bool FillExportOrderExcel(string filePath, string _Onum, string _GN, string _PO, string _SN, string _FromDateTime, string _ToDateTime)
+    {
+        bool b = false;
+        DataTable funcDs = DataModelUtility.getOrderByCompose(_Onum, _GN, _PO, _SN, _FromDateTime, _ToDateTime);
+        //for循环
         return b;
     }
 
