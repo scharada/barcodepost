@@ -18,16 +18,19 @@ public partial class ExportExcel : System.Web.UI.Page
             Response.Redirect("Login.aspx");
         }
 
-        if (Request.Params["fileName"] != null)
+        if (Request.Params["O"] != null&&Request.Params["G"] != null&&Request.Params["P"] != null&&Request.Params["S"] != null&&Request.Params["F"] != null&&Request.Params["T"] != null)
         {
-            if (Request.Params["fileName"].ToString().Trim() != "")
-            {
-                string _fileName = Request.Params["fileName"].ToString().Trim();
+                string _O = Request.Params["O"].ToString().Trim();
+                string _G = Request.Params["G"].ToString().Trim();
+                string _P = Request.Params["P"].ToString().Trim();
+                string _S = Request.Params["S"].ToString().Trim();
+                string _F = Request.Params["F"].ToString().Trim();
+                string _T = Request.Params["T"].ToString().Trim();
 
+                string _fileName = TemplateUtil.CreateNewOrderExportExcel();
                 string _fullPath = HttpRuntime.AppDomainAppPath + TemplateUtil.m_TemplatePathTaget + _fileName + ".xls";
-
+                TemplateUtil.FillExportOrderExcel(_fullPath, _O, _G, _P, _S, _F, _T);
                 ResponseFile(_fileName, _fullPath);
-            }
         }
     }
 
