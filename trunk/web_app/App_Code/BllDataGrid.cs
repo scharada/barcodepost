@@ -191,4 +191,19 @@ public class BllDataGrid
         }
         return _returnString;
     }
+
+    internal static string ExportAllOrder(Dictionary<string, object> param)
+    {
+        string _returnString = string.Empty;
+        string _newExportFile = TemplateUtil.CreateNewOrderExportExcel();
+        if (_newExportFile!=string.Empty)
+        {
+            _returnString = "ok";
+        }
+        else
+        {
+            _returnString = "error";
+        }
+        return _returnString;
+    }
 }
