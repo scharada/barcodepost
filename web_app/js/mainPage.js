@@ -120,6 +120,13 @@ function initializeMainGrid() {
                 deleteRows();
             }
         }, '-', {
+            id: 'btnExportExcel',
+            text: '订单导出',
+            iconCls: 'icon-save',
+            handler: function () {
+                initializeExportExcel();
+            }
+        }, '-', {
             id: 'btnEditPassword',
             text: '修改密码',
             iconCls: 'icon-help',

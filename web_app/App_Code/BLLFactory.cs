@@ -66,7 +66,9 @@ public class BLLFactory
             case "login":
                 _json = BllDataGrid.Login(param);
                 break;
-
+            case "exportallorder":
+                _json = BllDataGrid.ExportAllOrder(param);
+                break;
                 
                 
         }
