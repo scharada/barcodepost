@@ -63,6 +63,30 @@ public class TemplateUtil
         return b;
     }
 
+    ///   <summary>  
+    ///   删除过期的文件。  
+    ///   </summary>  
+    public static void ClearDateOutExcel()
+    {
+        //先取得文件夹中的文件列表  
+        string[] fileEntries = System.IO.Directory.GetFiles(HttpRuntime.AppDomainAppPath + m_TemplatePathTaget);
+        foreach (string singFiles in fileEntries)//遍历文件列表  
+        {
+            //将文件的生成日期与系统日期相比，如果是1小时以前生成的文件，删除它  
+            if (System.DateTime.Compare(System.IO.File.GetCreationTime(singFiles).AddHours(1), System.DateTime.Now) < 0)
+            {
+                try
+                {
+                    System.IO.File.Delete(singFiles);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+    }
+
     public static string GetNumberRandom()
     {
         int mikecat_intNum;
