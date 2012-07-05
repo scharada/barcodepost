@@ -29,19 +29,14 @@ function initializeEditWindow(wHeight, wWidth) {
 		modal : true
 	});
 }
-
-function goToExportExcel()
-{
-window.open('ExportExcel.aspx?fileName=201274260674','下载订单', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-}
-
 function initializeExportExcel() {
-    var _O = $("#centerregion").find("input[name='Onum']").val();
-    var _G = $("#centerregion").find("input[name='GN']").val();
-    var _P = $("#centerregion").find("input[name='PO']").val();
-    var _S = $("#centerregion").find("input[name='SN']").val();
-    var _F = $.trim($("#fromDatetime").datetimebox('getValue'));
-    var _T = $.trim($("#toDatetime").datetimebox('getValue'));
+ var opt = $("#mainTable").datagrid('getPager').data("pagination").options;  
+ var total = options.total;
+ if(total>=65536)
+ {
+        $.messager.alert("提示", "导出记录数大于Excel可容纳行数", "error");
+		return;
+        }
     _F = _F.replace(/-/g, "").replace(/:/g, "").replace(/\s+/g, "");
     _T = _T.replace(/-/g, "").replace(/:/g, "").replace(/\s+/g, ""); 
     window.open('ExportExcel.aspx?O='+_O+"&&G="+_G+"&&P="+_P+"&&S="+_S+"&&F="+_F+"&&T="+_T,'下载订单', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
@@ -210,3 +205,4 @@ function addOrder() {
 		}
 	});
 }
+

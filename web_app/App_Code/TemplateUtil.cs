@@ -43,8 +43,23 @@ public class TemplateUtil
     public static bool FillExportOrderExcel(string filePath, string _Onum, string _GN, string _PO, string _SN, string _FromDateTime, string _ToDateTime)
     {
         bool b = false;
-        DataTable funcDs = DataModelUtility.getOrderByCompose(_Onum, _GN, _PO, _SN, _FromDateTime, _ToDateTime);
-        //for循环
+        try
+        {
+            DataTable funcDs = DataModelUtility.getOrderByComposeForExport(_Onum, _GN, _PO, _SN, _FromDateTime, _ToDateTime);
+            //for循环
+            if (!System.IO.File.Exists(filePath))
+                return b;
+            ExcelHelper _excelHelper = new ExcelHelper(filePath);
+            _excelHelper.DataTableToExcel(funcDs, 1, 1);
+            _excelHelper.SaveFile();
+            b = true;
+        }
+        catch (Exception)
+        {
+            
+            throw;
+        }
+      
         return b;
     }
 
