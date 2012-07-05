@@ -30,8 +30,8 @@ function initializeEditWindow(wHeight, wWidth) {
 	});
 }
 function initializeExportExcel() {
- var opt = $("#mainTable").datagrid('getPager').data("pagination").options;  
- var total = options.total;
+    var opt = $("#mainTable").datagrid('options');
+    var total = opt.total;
  if(total>=65536)
  {
         $.messager.alert("提示", "导出记录数大于Excel可容纳行数", "error");
@@ -107,7 +107,7 @@ function initializeAddOrder() {
 	$("#owAdd").hide();
 
 	$('#addWindow').window({
-		title : "订单录入",
+		title : "订单录入"
 	});
 }
 
