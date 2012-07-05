@@ -23,8 +23,8 @@ function deleteRow(index) {
     var list = index + 1;
     $.messager.confirm('订单删除', '确定把第' + list + '条记录删除?', function (r) {
         if (r) {
-            var orderId = $('#searchTable').datagrid('getRows')[index];
-            $('#searchTable').datagrid('deleteRow', index);
+            var orderId = $('#mainTable').datagrid('getRows')[index];
+            $('#mainTable').datagrid('deleteRow', index);
             deleteOrder(orderId);
         }
     });
