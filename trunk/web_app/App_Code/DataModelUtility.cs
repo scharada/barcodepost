@@ -20,7 +20,7 @@ public class DataModelUtility
     public static string Field_PO = "PO#";
 
     /// <summary>
-    /// ?
+    /// 仓库代码
     /// </summary>
     public static string Field_GN = "GN";
 
@@ -35,7 +35,7 @@ public class DataModelUtility
     public static string Field_ST = "ST";
 
     /// <summary>
-    /// ?时间
+    /// 接受时间时间
     /// </summary>
     public static string Field_RT = "RT";
 
@@ -143,6 +143,46 @@ public class DataModelUtility
         _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
         return _dt;
     }
+
+    internal static DataTable getOrderByComposeForExport(string _Onum, string _GN, string _PO, string _SN, string _FromDateTime, string _ToDateTime)
+    {
+        string _whereCause = string.Empty;
+        if (_Onum != string.Empty)
+        {
+            _whereCause += Field_Onum + " LIKE '%" + _Onum + "%' AND ";
+        }
+        if (_GN != string.Empty)
+        {
+            _whereCause += Field_GN + " LIKE '%" + _GN + "%'  AND ";
+        }
+        if (_PO != string.Empty)
+        {
+            _whereCause += Field_PO + " LIKE '%" + _PO + "%' AND ";
+        }
+        if (_SN != string.Empty)
+        {
+            _whereCause += Field_SN + " LIKE '%" + _SN + "%' AND ";
+        }
+        if (_FromDateTime != string.Empty)
+        {
+            string _s = _FromDateTime;
+            _FromDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
+            _whereCause += Field_RT + " >= '" + _FromDateTime + "' AND ";
+        }
+        if (_ToDateTime != string.Empty)
+        {
+            string _s = _ToDateTime;
+            _ToDateTime = _s.Substring(0, 4) + "-" + _s.Substring(4, 2) + "-" + _s.Substring(6, 2) + " " + _s.Substring(8, 2) + ":" + _s.Substring(10, 2) + ":" + _s.Substring(12, 2);
+            _whereCause += Field_RT + " <= '" + _ToDateTime + "' AND ";
+        }
+        _whereCause = _whereCause.Trim().TrimEnd("AND".ToCharArray());
+        DataTable _dt = null;
+        string Sql = String.Format("SELECT {0} AS 发运单号 ,{1} AS 仓库代码,{2} AS 扫描序列号,{3} AS 扫描时间 ,{4} AS 接收确认时间  FROM {5} ", Field_PO, Field_GN, Field_SN, Field_ST, Field_RT, Table_Garbage);
+        string _sql = Sql + " WHERE " + _whereCause + " ORDER BY " + Field_RT + " DESC";
+        _dt = DbHelperSQL.DoQueryEx("b", _sql, true);
+        return _dt;
+    }
+
 
     internal static string deleteRecord(string running_no)
     {

@@ -5,6 +5,7 @@ function refreshDatagrid() {
     $("#centerregion").find("input[name='SN']").val('');
     $("#fromDatetime").datetimebox('setValue', '');
     $("#toDatetime").datetimebox('setValue', '');
+    _O = '', _G = '', _P = '', _S = '', _F = '', _T = '';
     getOrderAll();
     //导出excel不可用
     $("#btnExportExcel").linkbutton('disable');
@@ -22,12 +23,12 @@ function getOrderAll() {
 }
 
 function getOrderByCompose() {
-    var _Onum = $("#centerregion").find("input[name='Onum']").val();
-    var _GN = $("#centerregion").find("input[name='GN']").val();
-    var _PO = $("#centerregion").find("input[name='PO']").val();
-    var _SN = $("#centerregion").find("input[name='SN']").val();
-    var _fromDatetime = $.trim($("#fromDatetime").datetimebox('getValue'));
-    var _toDatetime = $.trim($("#toDatetime").datetimebox('getValue'));
+    var _Onum =_O= $("#centerregion").find("input[name='Onum']").val();
+    var _GN = _G= $("#centerregion").find("input[name='GN']").val();
+    var _PO = _P= $("#centerregion").find("input[name='PO']").val();
+    var _SN = _S=$("#centerregion").find("input[name='SN']").val();
+    var _fromDatetime =_F= $.trim($("#fromDatetime").datetimebox('getValue'));
+    var _toDatetime = _T=$.trim($("#toDatetime").datetimebox('getValue'));
 
     if (_Onum == "" && _GN == "" && _PO == "" && _SN == "" && _fromDatetime == "" && _toDatetime == "") {
         $.messager.alert("提示", "请输入查询关键字", "info");

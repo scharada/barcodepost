@@ -129,7 +129,7 @@
                         流水号：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="onumAdd" name="onumAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="onumAdd" name="onumAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>
@@ -139,7 +139,7 @@
                         发运单号：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="poAdd" name="poAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>
@@ -149,7 +149,7 @@
                         仓库代码：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="gnAdd" name="gnAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>
@@ -159,7 +159,7 @@
                         扫描序列号：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="snAdd" name="snAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="snAdd" name="snAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>
@@ -169,7 +169,7 @@
                         扫描时间 ：</label>
                 </td>
                 <td>
-                    <input class="easyui-datetimebox" type="text" id="stAdd" name="stAdd" style="width: 185px">
+                    <input class="easyui-datetimebox" type="text" id="stAdd" name="stAdd" style="width: 245px">
                     </input>
                 </td>
             </tr>
@@ -179,7 +179,7 @@
                         修改操作标识：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="flagAdd" name="flagAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="flagAdd" name="flagAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>
@@ -189,7 +189,7 @@
                         待修改流水号：</label>
                 </td>
                 <td>
-                    <input class="easyui-validatebox" type="text" id="owAdd" name="owAdd" style="width: 180px">
+                    <input class="easyui-validatebox" type="text" id="owAdd" name="owAdd" style="width: 240px">
                     </input>
                 </td>
             </tr>

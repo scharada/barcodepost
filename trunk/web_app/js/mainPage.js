@@ -1,3 +1,5 @@
+var _O = '', _G = '', _P = '',_S = '',_F = '', _T = '';
+
 function initializeMainGrid() {
     $('#mainTable').datagrid({
         loadMsg: '数据装载中......',
@@ -27,7 +29,7 @@ function initializeMainGrid() {
             field: 'Onum',
             title: '扫描流水号',
             align: 'center',
-            width: 120,
+            width: 160,
             sortable: true
         }, {
             field: 'PO',
@@ -39,7 +41,7 @@ function initializeMainGrid() {
             field: 'GN',
             title: '仓库代码',
             align: 'center',
-            width: 120,
+            width: 80,
             sortable: true
         }, {
             field: 'SN',
@@ -76,17 +78,16 @@ function initializeMainGrid() {
         }, {
             field: 'action',
             title: '操作',
-            width: 120,
+            width: 60,
             align: 'center',
             formatter: function (value, row, index) {
                 if (row.editing) {
-                    var s = '<a href="#" onclick="saverow(' + index + ')">保存</a> ';
-                    var c = '<a href="#" onclick="cancelrow(' + index + ')">取消</a>';
+                    var s = '<a href="javascript:void(0)" onclick="saverow(' + index + ')">保存</a> ';
+                    var c = '<a href="javascript:void(0)" onclick="cancelrow(' + index + ')">取消</a>';
                     return s + c;
                 } else {
-                    var e = '<a href="#" onclick="reviseRow(' + index + ')">编辑</a> ';
-                    var d = '<a href="#" onclick="deleteRow(' + index + ')">删除</a>';
-                    return e + d;
+                    var e = '<a href="javascript:void(0)" onclick="reviseRow(' + index + ')">编辑</a> ';
+                    return e ;
                 }
             }
         }]],

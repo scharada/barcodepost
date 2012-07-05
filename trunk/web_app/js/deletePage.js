@@ -1,5 +1,3 @@
-
-
 function deleteRows() {
     rows = $('#mainTable').datagrid('getSelections');
     data = rows.concat()
@@ -9,36 +7,16 @@ function deleteRows() {
     else {
         $.messager.confirm('订单删除', '您确定要删除选中的订单?', function (r) {
             if (r) {
-                for (var i = 0; i < data.length; i++) {
+                for (var i = 0; i < data.length; i++) 
+                {
                     index = $('#mainTable').datagrid('getRowIndex', data[i]);
                     $('#mainTable').datagrid('deleteRow', index);
                 }
                 deleteOrders(data);
+                $("#mainTable").datagrid('reload');
             }
         });
     }
-}
-
-function deleteRow(index) {
-    var list = index + 1;
-    $.messager.confirm('订单删除', '确定把第' + list + '条记录删除?', function (r) {
-        if (r) {
-            var orderId = $('#mainTable').datagrid('getRows')[index];
-            $('#mainTable').datagrid('deleteRow', index);
-            deleteOrder(orderId);
-        }
-    });
-}
-
-function deleteRowFromSearch(index) {
-    var list = index + 1;
-    $.messager.confirm('订单删除', '确定把第' + list + '条记录删除?', function (r) {
-        if (r) {
-            var orderId = $('#mainTable').datagrid('getRows')[index];
-            $('#mainTable').datagrid('deleteRow', index);
-            deleteOrder(orderId);
-        }
-    });
 }
 
 function deleteOrder(orderId) {
