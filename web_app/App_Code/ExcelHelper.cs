@@ -5,7 +5,7 @@ using System.Data;
 using System.Reflection;
 using System.Diagnostics;
 using System.Collections;
-using Excel = Microsoft.Office.Interop.Excel;
+using ExcelInterop = Microsoft.Office.Interop.Excel;
 
 /// <summary>
 ///ExcelHelper 的摘要说明
@@ -19,12 +19,12 @@ public class ExcelHelper
     private DateTime beforeTime;            //Excel启动之前时间
     private DateTime afterTime;                //Excel启动之后时间
     Microsoft.Office.Interop.Excel.Application app;
-    Excel.Workbook workBook;
-    Excel.Worksheet workSheet;
-    Excel.Range range;
-    Excel.Range range1;
-    Excel.Range range2;
-    Excel.TextBox textBox;
+    ExcelInterop.Workbook workBook;
+    ExcelInterop.Worksheet workSheet;
+    ExcelInterop.Range range;
+    ExcelInterop.Range range1;
+    ExcelInterop.Range range2;
+    ExcelInterop.TextBox textBox;
     private int sheetCount = 1;            //WorkSheet数量
     private string sheetPrefixName = "页";
     #endregion
@@ -87,7 +87,7 @@ public class ExcelHelper
 
         //创建一个Application对象并使其可见
         beforeTime = DateTime.Now;
-        app = new Excel.ApplicationClass();
+        app = new ExcelInterop.ApplicationClass();
         app.Visible = true;
         afterTime = DateTime.Now;
 
@@ -96,7 +96,7 @@ public class ExcelHelper
             missing, missing, missing, missing, missing, missing, missing);
 
         //得到WorkSheet对象
-        workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(1);
+        workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(1);
 
     }
 
@@ -111,7 +111,7 @@ public class ExcelHelper
 
         //创建一个Application对象并使其可见
         beforeTime = DateTime.Now;
-        app = new Excel.ApplicationClass();
+        app = new ExcelInterop.ApplicationClass();
         app.Visible = true;
         afterTime = DateTime.Now;
 
@@ -122,7 +122,7 @@ public class ExcelHelper
             Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
         //得到WorkSheet对象
-        workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(1);
+        workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(1);
 
     }
 
@@ -133,7 +133,7 @@ public class ExcelHelper
     {
         //创建一个Application对象并使其可见
         beforeTime = DateTime.Now;
-        app = new Excel.ApplicationClass();
+        app = new ExcelInterop.ApplicationClass();
         //app.Visible = true; 不自动打开
         afterTime = DateTime.Now;
 
@@ -141,7 +141,7 @@ public class ExcelHelper
         workBook = app.Workbooks.Add(Type.Missing);
 
         //得到WorkSheet对象
-        workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(1);
+        workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(1);
 
     }
     #endregion
@@ -165,7 +165,7 @@ public class ExcelHelper
         //复制sheetCount-1个WorkSheet对象
         for (int i = 1; i < sheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Copy(missing, workBook.Worksheets[i]);
         }
 
@@ -179,7 +179,7 @@ public class ExcelHelper
                 endRow = rowCount;
 
             //获取要写入数据的WorkSheet对象，并重命名
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Name = sheetPrefixName + "-" + i.ToString();
 
             //将dt中的数据写入WorkSheet
@@ -203,7 +203,7 @@ public class ExcelHelper
                 }
             }
 
-            range = (Excel.Range)workSheet.Cells[top, left];
+            range = (ExcelInterop.Range)workSheet.Cells[top, left];
             range = range.get_Resize(row, colCount);
             range.Value = ss;
 
@@ -223,7 +223,7 @@ public class ExcelHelper
 
                 System.Windows.Forms.Clipboard.SetDataObject(sb.ToString());
 
-                range = (Excel.Range)workSheet.Cells[top,left];
+                range = (ExcelInterop.Range)workSheet.Cells[top,left];
                 workSheet.Paste(range,false);*/
             #endregion
 
@@ -257,7 +257,7 @@ public class ExcelHelper
             }
         }
 
-        range = (Excel.Range)workSheet.Cells[top, left];
+        range = (ExcelInterop.Range)workSheet.Cells[top, left];
         range = range.get_Resize(rowCount + 1, colCount + 1);
         range.Value = arr;
     }
@@ -281,7 +281,7 @@ public class ExcelHelper
         //复制sheetCount-1个WorkSheet对象
         for (int i = 1; i < sheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Copy(missing, workBook.Worksheets[i]);
         }
 
@@ -295,7 +295,7 @@ public class ExcelHelper
                 endRow = rowCount;
 
             //获取要写入数据的WorkSheet对象，并重命名
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Name = sheetPrefixName + "-" + i.ToString();
 
             //将dt中的数据写入WorkSheet
@@ -319,7 +319,7 @@ public class ExcelHelper
                 }
             }
 
-            range = (Excel.Range)workSheet.Cells[top, left];
+            range = (ExcelInterop.Range)workSheet.Cells[top, left];
             range = range.get_Resize(row, colCount);
             range.Value = ss;
 
@@ -346,7 +346,7 @@ public class ExcelHelper
         //复制sheetCount-1个WorkSheet对象
         for (int i = 1; i < sheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Copy(missing, workBook.Worksheets[i]);
         }
 
@@ -361,7 +361,7 @@ public class ExcelHelper
                 endRow = rowCount;
 
             //获取要写入数据的WorkSheet对象，并重命名
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Name = sheetPrefixName + "-" + i.ToString();
 
             //将二维数组中的数据写入WorkSheet
@@ -385,7 +385,7 @@ public class ExcelHelper
                 }
             }
 
-            range = (Excel.Range)workSheet.Cells[top, left];
+            range = (ExcelInterop.Range)workSheet.Cells[top, left];
             range = range.get_Resize(row, colCount);
             range.Value = ss;
         }
@@ -404,7 +404,7 @@ public class ExcelHelper
         int rowCount = arr.GetLength(0);        //二维数组行数（一维长度）
         int colCount = arr.GetLength(1);    //二维数据列数（二维长度）
 
-        range = (Excel.Range)workSheet.Cells[top, left];
+        range = (ExcelInterop.Range)workSheet.Cells[top, left];
         range = range.get_Resize(rowCount, colCount);
         range.FormulaArray = arr;
 
@@ -422,7 +422,7 @@ public class ExcelHelper
         int rowCount = arr.GetLength(0);        //二维数组行数（一维长度）
         int colCount = arr.GetLength(1);    //二维数据列数（二维长度）
 
-        range = (Excel.Range)workSheet.Cells[top, left];
+        range = (ExcelInterop.Range)workSheet.Cells[top, left];
         range = range.get_Resize(rowCount, colCount);
 
         //注意：使用range.FormulaArray写合并的单元格会出问题
@@ -446,7 +446,7 @@ public class ExcelHelper
         int rowCount = arr.GetLength(0);        //二维数组行数（一维长度）
         int colCount = arr.GetLength(1);    //二维数据列数（二维长度）
 
-        range = (Excel.Range)workSheet.Cells[top, left];
+        range = (ExcelInterop.Range)workSheet.Cells[top, left];
         range = range.get_Resize(rowCount, colCount);
 
         //注意：使用range.FormulaArray写合并的单元格会出问题
@@ -475,12 +475,12 @@ public class ExcelHelper
         }
 
         // 改变当前工作表
-        this.workSheet = (Excel.Worksheet)this.workBook.Sheets.get_Item(sheetIndex);
+        this.workSheet = (ExcelInterop.Worksheet)this.workBook.Sheets.get_Item(sheetIndex);
 
         int rowCount = arr.GetLength(0);        //二维数组行数（一维长度）
         int colCount = arr.GetLength(1);    //二维数据列数（二维长度）
 
-        range = (Excel.Range)workSheet.Cells[top, left];
+        range = (ExcelInterop.Range)workSheet.Cells[top, left];
         range = range.get_Resize(rowCount, colCount);
 
         range.Value2 = arr;
@@ -504,7 +504,7 @@ public class ExcelHelper
         //复制sheetCount-1个WorkSheet对象
         for (int i = 1; i < sheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Copy(missing, workBook.Worksheets[i]);
         }
 
@@ -519,7 +519,7 @@ public class ExcelHelper
                 endRow = rowCount;
 
             //获取要写入数据的WorkSheet对象，并重命名
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             workSheet.Name = sheetPrefixName + "-" + i.ToString();
 
             //将二维数组中的数据写入WorkSheet
@@ -543,7 +543,7 @@ public class ExcelHelper
                 }
             }
 
-            range = (Excel.Range)workSheet.Cells[top, left];
+            range = (ExcelInterop.Range)workSheet.Cells[top, left];
             range = range.get_Resize(row, colCount);
             range.Value = ss;
 
@@ -569,7 +569,7 @@ public class ExcelHelper
         if (sheetIndex > this.WorkSheetCount)
             return;
 
-        this.workSheet = (Excel.Worksheet)this.workBook.Sheets.get_Item(sheetIndex);
+        this.workSheet = (ExcelInterop.Worksheet)this.workBook.Sheets.get_Item(sheetIndex);
     }
     /// <summary>
     /// 隐藏指定名称的工作表
@@ -579,18 +579,18 @@ public class ExcelHelper
     {
         try
         {
-            Excel.Worksheet sheet = null;
+            ExcelInterop.Worksheet sheet = null;
 
             for (int i = 1; i <= this.WorkSheetCount; i++)
             {
-                workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
 
                 if (workSheet.Name == sheetName)
                     sheet = workSheet;
             }
 
             if (sheet != null)
-                sheet.Visible = Excel.XlSheetVisibility.xlSheetHidden;
+                sheet.Visible = ExcelInterop.XlSheetVisibility.xlSheetHidden;
             else
             {
                 this.KillExcelProcess();
@@ -618,10 +618,10 @@ public class ExcelHelper
 
         try
         {
-            Excel.Worksheet sheet = null;
-            sheet = (Excel.Worksheet)workBook.Sheets.get_Item(sheetIndex);
+            ExcelInterop.Worksheet sheet = null;
+            sheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(sheetIndex);
 
-            sheet.Visible = Excel.XlSheetVisibility.xlSheetHidden;
+            sheet.Visible = ExcelInterop.XlSheetVisibility.xlSheetHidden;
         }
         catch (Exception e)
         {
@@ -640,12 +640,12 @@ public class ExcelHelper
     {
         try
         {
-            Excel.Worksheet sheet = null;
+            ExcelInterop.Worksheet sheet = null;
             int sheetIndex = 0;
 
             for (int i = 1; i <= this.WorkSheetCount; i++)
             {
-                workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
 
                 if (workSheet.Name == sheetName)
                 {
@@ -664,7 +664,7 @@ public class ExcelHelper
                 //重命名
                 for (int i = sheetIndex; i <= sheetIndex + sheetCount; i++)
                 {
-                    workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                    workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
                     workSheet.Name = sheetName + "-" + Convert.ToString(i - sheetIndex + 1);
                 }
             }
@@ -697,13 +697,13 @@ public class ExcelHelper
 
         try
         {
-            Excel.Worksheet srcSheet = (Excel.Worksheet)workBook.Sheets.get_Item(srcSheetIndex);
-            Excel.Worksheet aimSheet = (Excel.Worksheet)workBook.Sheets.get_Item(aimSheetIndex);
+            ExcelInterop.Worksheet srcSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(srcSheetIndex);
+            ExcelInterop.Worksheet aimSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(aimSheetIndex);
 
             srcSheet.Copy(this.missing, aimSheet);
 
             //重命名
-            workSheet = (Excel.Worksheet)aimSheet.Next;        //获取新拷贝的工作表
+            workSheet = (ExcelInterop.Worksheet)aimSheet.Next;        //获取新拷贝的工作表
             workSheet.Name = newSheetName;
         }
         catch (Exception e)
@@ -722,12 +722,12 @@ public class ExcelHelper
     {
         try
         {
-            Excel.Worksheet sheet = null;
+            ExcelInterop.Worksheet sheet = null;
 
             //找到名称位sheetName的工作表
             for (int i = 1; i <= this.WorkSheetCount; i++)
             {
-                workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
 
                 if (workSheet.Name == sheetName)
                 {
@@ -766,8 +766,8 @@ public class ExcelHelper
 
         try
         {
-            Excel.Worksheet sheet = null;
-            sheet = (Excel.Worksheet)workBook.Sheets.get_Item(sheetIndex);
+            ExcelInterop.Worksheet sheet = null;
+            sheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(sheetIndex);
 
             sheet.Delete();
         }
@@ -790,12 +790,12 @@ public class ExcelHelper
     {
         for (int i = 1; i <= this.WorkSheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
 
 
             try
             {
-                textBox = (Excel.TextBox)workSheet.TextBoxes(textboxName);
+                textBox = (ExcelInterop.TextBox)workSheet.TextBoxes(textboxName);
                 textBox.Text = text;
             }
             catch
@@ -814,11 +814,11 @@ public class ExcelHelper
     /// <param name="text">要写入的文本</param>
     public void SetTextBox(int sheetIndex, string textboxName, string text)
     {
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
 
         try
         {
-            textBox = (Excel.TextBox)workSheet.TextBoxes(textboxName);
+            textBox = (ExcelInterop.TextBox)workSheet.TextBoxes(textboxName);
             textBox.Text = text;
         }
         catch
@@ -838,13 +838,13 @@ public class ExcelHelper
 
         for (int i = 1; i <= this.WorkSheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
 
             foreach (DictionaryEntry dic in ht)
             {
                 try
                 {
-                    textBox = (Excel.TextBox)workSheet.TextBoxes(dic.Key);
+                    textBox = (ExcelInterop.TextBox)workSheet.TextBoxes(dic.Key);
                     textBox.Text = dic.Value.ToString();
                 }
                 catch
@@ -870,13 +870,13 @@ public class ExcelHelper
             throw new Exception("索引超出范围，WorkSheet索引不能大于WorkSheet数量！");
         }
 
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
 
         foreach (DictionaryEntry dic in ht)
         {
             try
             {
-                textBox = (Excel.TextBox)workSheet.TextBoxes(dic.Key);
+                textBox = (ExcelInterop.TextBox)workSheet.TextBoxes(dic.Key);
                 textBox.Text = dic.Value.ToString();
             }
             catch
@@ -943,7 +943,7 @@ public class ExcelHelper
 
         for (int i = 1; i <= this.WorkSheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
 
             foreach (DictionaryEntry dic in ht)
             {
@@ -982,7 +982,7 @@ public class ExcelHelper
 
         if (ht.Count == 0) return;
 
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
 
         foreach (DictionaryEntry dic in ht)
         {
@@ -1024,7 +1024,7 @@ public class ExcelHelper
 
         if (arr.Length == 0) return;
 
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
 
         for (int i = 0; i < arr.Length; i++)
         {
@@ -1034,7 +1034,7 @@ public class ExcelHelper
                 rowIndex = Convert.ToInt32(position.Split(',')[0]);
                 columnIndex = Convert.ToInt32(position.Split(',')[1]);
 
-                Excel.Range cell = (Excel.Range)workSheet.Cells[rowIndex, columnIndex];
+                ExcelInterop.Range cell = (ExcelInterop.Range)workSheet.Cells[rowIndex, columnIndex];
                 cell.FormulaR1C1 = cell.Text;
             }
             catch
@@ -1054,7 +1054,7 @@ public class ExcelHelper
         int rowIndex;
         int columnIndex;
         string position;
-        Excel.Worksheet sheet = null;
+        ExcelInterop.Worksheet sheet = null;
         int sheetIndex = 0;
 
         if (ht.Count == 0) return;
@@ -1063,7 +1063,7 @@ public class ExcelHelper
         {
             for (int i = 1; i <= this.WorkSheetCount; i++)
             {
-                workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
 
                 if (workSheet.Name == sheetName)
                 {
@@ -1117,14 +1117,14 @@ public class ExcelHelper
     {
         for (int i = 1; i <= this.WorkSheetCount; i++)
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
             range = workSheet.get_Range(workSheet.Cells[beginRowIndex, beginColumnIndex], workSheet.Cells[endRowIndex, endColumnIndex]);
 
             range.ClearContents();        //先把Range内容清除，合并才不会出错
             range.MergeCells = true;
             range.Value = text;
-            range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-            range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            range.HorizontalAlignment = ExcelInterop.XlHAlign.xlHAlignCenter;
+            range.VerticalAlignment = ExcelInterop.XlVAlign.xlVAlignCenter;
         }
     }
 
@@ -1145,14 +1145,14 @@ public class ExcelHelper
             throw new Exception("索引超出范围，WorkSheet索引不能大于WorkSheet数量！");
         }
 
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
         range = workSheet.get_Range(workSheet.Cells[beginRowIndex, beginColumnIndex], workSheet.Cells[endRowIndex, endColumnIndex]);
 
         range.ClearContents();        //先把Range内容清除，合并才不会出错
         range.MergeCells = true;
         range.Value = text;
-        range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-        range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+        range.HorizontalAlignment = ExcelInterop.XlHAlign.xlHAlignCenter;
+        range.VerticalAlignment = ExcelInterop.XlVAlign.xlVAlignCenter;
     }
     #endregion
 
@@ -1174,14 +1174,14 @@ public class ExcelHelper
             int count = 0;
             string text1;
             string text2;
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(i);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(i);
 
             for (int j = beginRowIndex; j <= endRowIndex; j++)
             {
-                range = (Excel.Range)workSheet.Cells[j, columnIndex];
+                range = (ExcelInterop.Range)workSheet.Cells[j, columnIndex];
                 text1 = range.Text.ToString();
 
-                range = (Excel.Range)workSheet.Cells[j + 1, columnIndex];
+                range = (ExcelInterop.Range)workSheet.Cells[j + 1, columnIndex];
                 text2 = range.Text.ToString();
 
                 if (text1 == text2)
@@ -1227,14 +1227,14 @@ public class ExcelHelper
         int count = 0;
         string text1;
         string text2;
-        workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+        workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
 
         for (int j = beginRowIndex; j <= endRowIndex; j++)
         {
-            range = (Excel.Range)workSheet.Cells[j, columnIndex];
+            range = (ExcelInterop.Range)workSheet.Cells[j, columnIndex];
             text1 = range.Text.ToString();
 
-            range = (Excel.Range)workSheet.Cells[j + 1, columnIndex];
+            range = (ExcelInterop.Range)workSheet.Cells[j + 1, columnIndex];
             text2 = range.Text.ToString();
 
             if (text1 == text2)
@@ -1268,12 +1268,12 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                range = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                range = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
                 for (int i = 0; i < count; i++)
                 {
-                    range.Insert(Excel.XlDirection.xlDown);
+                    range.Insert(ExcelInterop.XlDirection.xlDown);
                 }
             }
         }
@@ -1300,12 +1300,12 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            range = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            range = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
             for (int i = 0; i < count; i++)
             {
-                range.Insert(Excel.XlDirection.xlDown);
+                range.Insert(ExcelInterop.XlDirection.xlDown);
             }
         }
         catch (Exception e)
@@ -1326,12 +1326,12 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                range1 = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                range1 = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
                 for (int i = 1; i <= count; i++)
                 {
-                    range2 = (Excel.Range)workSheet.Rows[rowIndex + i, this.missing];
+                    range2 = (ExcelInterop.Range)workSheet.Rows[rowIndex + i, this.missing];
                     range1.Copy(range2);
                 }
             }
@@ -1359,12 +1359,12 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            range1 = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            range1 = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
             for (int i = 1; i <= count; i++)
             {
-                range2 = (Excel.Range)workSheet.Rows[rowIndex + i, this.missing];
+                range2 = (ExcelInterop.Range)workSheet.Rows[rowIndex + i, this.missing];
                 range1.Copy(range2);
             }
         }
@@ -1386,12 +1386,12 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                range = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                range = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
                 for (int i = 0; i < count; i++)
                 {
-                    range.Delete(Excel.XlDirection.xlDown);
+                    range.Delete(ExcelInterop.XlDirection.xlDown);
                 }
             }
         }
@@ -1418,12 +1418,12 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            range = (Excel.Range)workSheet.Rows[rowIndex, this.missing];
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            range = (ExcelInterop.Range)workSheet.Rows[rowIndex, this.missing];
 
             for (int i = 0; i < count; i++)
             {
-                range.Delete(Excel.XlDirection.xlDown);
+                range.Delete(ExcelInterop.XlDirection.xlDown);
             }
         }
         catch (Exception e)
@@ -1448,12 +1448,12 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                range = (Excel.Range)workSheet.Columns[this.missing, columnIndex];
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                range = (ExcelInterop.Range)workSheet.Columns[this.missing, columnIndex];
 
                 for (int i = 0; i < count; i++)
                 {
-                    range.Insert(Excel.XlDirection.xlDown);
+                    range.Insert(ExcelInterop.XlDirection.xlDown);
                 }
             }
         }
@@ -1480,12 +1480,12 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            range = (Excel.Range)workSheet.Columns[this.missing, columnIndex];
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            range = (ExcelInterop.Range)workSheet.Columns[this.missing, columnIndex];
 
             for (int i = 0; i < count; i++)
             {
-                range.Insert(Excel.XlDirection.xlDown);
+                range.Insert(ExcelInterop.XlDirection.xlDown);
             }
         }
         catch (Exception e)
@@ -1506,14 +1506,14 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                //                    range1 = (Excel.Range)workSheet.Columns[columnIndex,this.missing];
-                range1 = (Excel.Range)workSheet.get_Range(this.IntToLetter(columnIndex) + "1", this.IntToLetter(columnIndex) + "10000");
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                //                    range1 = (ExcelInterop.Range)workSheet.Columns[columnIndex,this.missing];
+                range1 = (ExcelInterop.Range)workSheet.get_Range(this.IntToLetter(columnIndex) + "1", this.IntToLetter(columnIndex) + "10000");
 
                 for (int i = 1; i <= count; i++)
                 {
-                    //                        range2 = (Excel.Range)workSheet.Columns[this.missing,columnIndex + i];
-                    range2 = (Excel.Range)workSheet.get_Range(this.IntToLetter(columnIndex + i) + "1", this.IntToLetter(columnIndex + i) + "10000");
+                    //                        range2 = (ExcelInterop.Range)workSheet.Columns[this.missing,columnIndex + i];
+                    range2 = (ExcelInterop.Range)workSheet.get_Range(this.IntToLetter(columnIndex + i) + "1", this.IntToLetter(columnIndex + i) + "10000");
                     range1.Copy(range2);
                 }
             }
@@ -1541,14 +1541,14 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            //                range1 = (Excel.Range)workSheet.Columns[Type.Missing,columnIndex];
-            range1 = (Excel.Range)workSheet.get_Range(this.IntToLetter(columnIndex) + "1", this.IntToLetter(columnIndex) + "10000");
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            //                range1 = (ExcelInterop.Range)workSheet.Columns[Type.Missing,columnIndex];
+            range1 = (ExcelInterop.Range)workSheet.get_Range(this.IntToLetter(columnIndex) + "1", this.IntToLetter(columnIndex) + "10000");
 
             for (int i = 1; i <= count; i++)
             {
-                //                    range2 = (Excel.Range)workSheet.Columns[Type.Missing,columnIndex + i];
-                range2 = (Excel.Range)workSheet.get_Range(this.IntToLetter(columnIndex + i) + "1", this.IntToLetter(columnIndex + i) + "10000");
+                //                    range2 = (ExcelInterop.Range)workSheet.Columns[Type.Missing,columnIndex + i];
+                range2 = (ExcelInterop.Range)workSheet.get_Range(this.IntToLetter(columnIndex + i) + "1", this.IntToLetter(columnIndex + i) + "10000");
                 range1.Copy(range2);
             }
         }
@@ -1570,12 +1570,12 @@ public class ExcelHelper
         {
             for (int n = 1; n <= this.WorkSheetCount; n++)
             {
-                workSheet = (Excel.Worksheet)workBook.Worksheets[n];
-                range = (Excel.Range)workSheet.Columns[this.missing, columnIndex];
+                workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[n];
+                range = (ExcelInterop.Range)workSheet.Columns[this.missing, columnIndex];
 
                 for (int i = 0; i < count; i++)
                 {
-                    range.Delete(Excel.XlDirection.xlDown);
+                    range.Delete(ExcelInterop.XlDirection.xlDown);
                 }
             }
         }
@@ -1602,12 +1602,12 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets[sheetIndex];
-            range = (Excel.Range)workSheet.Columns[this.missing, columnIndex];
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets[sheetIndex];
+            range = (ExcelInterop.Range)workSheet.Columns[this.missing, columnIndex];
 
             for (int i = 0; i < count; i++)
             {
-                range.Delete(Excel.XlDirection.xlDown);
+                range.Delete(ExcelInterop.XlDirection.xlDown);
             }
         }
         catch (Exception e)
@@ -1638,7 +1638,7 @@ public class ExcelHelper
 
         try
         {
-            workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
+            workSheet = (ExcelInterop.Worksheet)workBook.Worksheets.get_Item(sheetIndex);
             range1 = workSheet.get_Range(startCell, endCell);
             range2 = workSheet.get_Range(targetCell, this.missing);
 
@@ -1662,11 +1662,11 @@ public class ExcelHelper
     {
         try
         {
-            Excel.Worksheet sheet = null;
+            ExcelInterop.Worksheet sheet = null;
 
             for (int i = 1; i <= this.WorkSheetCount; i++)
             {
-                workSheet = (Excel.Worksheet)workBook.Sheets.get_Item(i);
+                workSheet = (ExcelInterop.Worksheet)workBook.Sheets.get_Item(i);
 
                 if (workSheet.Name == sheetName)
                 {
@@ -1702,20 +1702,20 @@ public class ExcelHelper
     /// </summary>
     public void RangAutoFill()
     {
-        Excel.Range rng = workSheet.get_Range("B4", Type.Missing);
+        ExcelInterop.Range rng = workSheet.get_Range("B4", Type.Missing);
         rng.Value2 = "星期一 ";
         rng.AutoFill(workSheet.get_Range("B4", "B9"),
-            Excel.XlAutoFillType.xlFillWeekdays);
+            ExcelInterop.XlAutoFillType.xlFillWeekdays);
 
         rng = workSheet.get_Range("C4", Type.Missing);
         rng.Value = "一月";
         rng.AutoFill(workSheet.get_Range("C4", "C9"),
-            Excel.XlAutoFillType.xlFillMonths);
+            ExcelInterop.XlAutoFillType.xlFillMonths);
 
         rng = workSheet.get_Range("D4", Type.Missing);
         rng.Value2 = "1";
         rng.AutoFill(workSheet.get_Range("D4", "D9"),
-            Excel.XlAutoFillType.xlFillSeries);
+            ExcelInterop.XlAutoFillType.xlFillSeries);
 
         rng = workSheet.get_Range("E4", Type.Missing);
         rng.Value2 = "3";
@@ -1723,7 +1723,7 @@ public class ExcelHelper
         rng.Value2 = "6";
         rng = workSheet.get_Range("E4", "E5");
         rng.AutoFill(workSheet.get_Range("E4", "E9"),
-            Excel.XlAutoFillType.xlFillSeries);
+            ExcelInterop.XlAutoFillType.xlFillSeries);
 
     }
 
@@ -1733,8 +1733,8 @@ public class ExcelHelper
     public void ApplyStyle()
     {
         object missingValue = Type.Missing;
-        Excel.Range rng = workSheet.get_Range("B3", "L23");
-        Excel.Style style;
+        ExcelInterop.Range rng = workSheet.get_Range("B3", "L23");
+        ExcelInterop.Style style;
 
         try
         {
@@ -1748,7 +1748,7 @@ public class ExcelHelper
             style.Font.Size = 12;
             style.Font.Color = 255;
             style.Interior.Color = (200 << 16) | (200 << 8) | 200;
-            style.Interior.Pattern = Excel.XlPattern.xlPatternSolid;
+            style.Interior.Pattern = ExcelInterop.XlPattern.xlPatternSolid;
         }
 
         rng.Value2 = "'Style Test";
@@ -1847,7 +1847,7 @@ public class ExcelHelper
 
         try
         {
-            workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+            workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
         }
         catch (Exception e)
         {
@@ -1874,30 +1874,30 @@ public class ExcelHelper
             {
                 case "HTML":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "CSV":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlCSV, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlCSV, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "TEXT":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 //                    case "XML":
                 //                    {
-                //                        workBook.SaveAs(outputFile,Excel.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
-                //                            Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
+                //                        workBook.SaveAs(outputFile,ExcelInterop.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
+                //                            Type.Missing, Type.Missing, ExcelInterop.XlSaveAsAccessMode.xlNoChange,
                 //                            Type.Missing, Type.Missing, Type.Missing, Type.Missing,    Type.Missing);
                 //                        break;
                 //
                 //                    }
                 default:
                     {
-                        workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
             }
@@ -1941,7 +1941,7 @@ public class ExcelHelper
 
         try
         {
-            workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+            workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
         }
         catch (Exception e)
         {
@@ -1968,29 +1968,29 @@ public class ExcelHelper
             {
                 case "HTML":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "CSV":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlCSV, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlCSV, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "TEXT":
                     {
-                        workBook.SaveAs(outputFile, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 //                    case "XML":
                 //                    {
-                //                        workBook.SaveAs(outputFile,Excel.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
-                //                            Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
+                //                        workBook.SaveAs(outputFile,ExcelInterop.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
+                //                            Type.Missing, Type.Missing, ExcelInterop.XlSaveAsAccessMode.xlNoChange,
                 //                            Type.Missing, Type.Missing, Type.Missing, Type.Missing,    Type.Missing);
                 //                        break;
                 //                    }
                 default:
                     {
-                        workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(outputFile, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
             }
@@ -2013,7 +2013,7 @@ public class ExcelHelper
     {
         try
         {
-            workBook.SaveAs(fileName, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+            workBook.SaveAs(fileName, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
         }
         catch (Exception e)
         {
@@ -2038,29 +2038,29 @@ public class ExcelHelper
             {
                 case "HTML":
                     {
-                        workBook.SaveAs(fileName, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(fileName, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "CSV":
                     {
-                        workBook.SaveAs(fileName, Excel.XlFileFormat.xlCSV, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(fileName, ExcelInterop.XlFileFormat.xlCSV, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 case "TEXT":
                     {
-                        workBook.SaveAs(fileName, Excel.XlFileFormat.xlHtml, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(fileName, ExcelInterop.XlFileFormat.xlHtml, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
                 //                    case "XML":
                 //                    {
-                //                        workBook.SaveAs(fileName,Excel.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
-                //                            Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
+                //                        workBook.SaveAs(fileName,ExcelInterop.XlFileFormat.xlXMLSpreadsheet, Type.Missing, Type.Missing,
+                //                            Type.Missing, Type.Missing, ExcelInterop.XlSaveAsAccessMode.xlNoChange,
                 //                            Type.Missing, Type.Missing, Type.Missing, Type.Missing,    Type.Missing);
                 //                        break;
                 //                    }
                 default:
                     {
-                        workBook.SaveAs(fileName, missing, missing, missing, missing, missing, Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
+                        workBook.SaveAs(fileName, missing, missing, missing, missing, missing, ExcelInterop.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing);
                         break;
                     }
             }
@@ -2088,7 +2088,7 @@ public class ExcelHelper
     /// <param name="endRowIndex">结束行索引</param>
     /// <param name="endColumnIndex">结束列索引</param>
     /// <param name="text">合并后Range的值</param>
-    private void MergeCells(Excel.Worksheet sheet, int beginRowIndex, int beginColumnIndex, int endRowIndex, int endColumnIndex, string text)
+    private void MergeCells(ExcelInterop.Worksheet sheet, int beginRowIndex, int beginColumnIndex, int endRowIndex, int endColumnIndex, string text)
     {
         if (sheet == null)
             return;
@@ -2098,8 +2098,8 @@ public class ExcelHelper
         range.ClearContents();        //先把Range内容清除，合并才不会出错
         range.MergeCells = true;
         range.Value = text;
-        range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-        range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+        range.HorizontalAlignment = ExcelInterop.XlHAlign.xlHAlignCenter;
+        range.VerticalAlignment = ExcelInterop.XlVAlign.xlVAlignCenter;
     }
 
     /// <summary>
@@ -2108,7 +2108,7 @@ public class ExcelHelper
     /// <param name="columnIndex">要合并的列索引</param>
     /// <param name="beginRowIndex">合并开始行索引</param>
     /// <param name="rows">要合并的行数</param>
-    private void MergeRows(Excel.Worksheet sheet, int columnIndex, int beginRowIndex, int rows)
+    private void MergeRows(ExcelInterop.Worksheet sheet, int columnIndex, int beginRowIndex, int rows)
     {
         int beginIndex = beginRowIndex;
         int count = 0;
@@ -2120,8 +2120,8 @@ public class ExcelHelper
 
         for (int j = beginRowIndex; j < beginRowIndex + rows; j++)
         {
-            range1 = (Excel.Range)sheet.Cells[j, columnIndex];
-            range2 = (Excel.Range)sheet.Cells[j + 1, columnIndex];
+            range1 = (ExcelInterop.Range)sheet.Cells[j, columnIndex];
+            range2 = (ExcelInterop.Range)sheet.Cells[j + 1, columnIndex];
             text1 = range1.Text.ToString();
             text2 = range2.Text.ToString();
 
